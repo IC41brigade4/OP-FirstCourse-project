@@ -6,7 +6,9 @@ abstract class User
    
 	User(std::string firstName, std::string lastName, int age, int docID, std::string medicalExaminationResult, bool HasDeferment, std::string city) { };
 
-    // SETTERS
+    /*
+    SETTERS
+    */
     void setAge(int age)
     {
         this->age = age;
@@ -45,7 +47,9 @@ abstract class User
         this->hasDeferment = hasDeferment;
         this->city = city;
     }
-    // GETTERS
+    /*
+    GETTERS
+    */
     int getAge()
     {
         return age;

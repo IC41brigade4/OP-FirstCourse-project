@@ -1,4 +1,4 @@
-class Officer : User
+class Officer : User, OfficerInterface
 {
-
+    //todo
 }

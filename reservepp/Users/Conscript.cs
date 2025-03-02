@@ -1,4 +1,4 @@
-class Conscript : User
+class Conscript : User, ConscriptInterface
 {
-
+    //todo
 }

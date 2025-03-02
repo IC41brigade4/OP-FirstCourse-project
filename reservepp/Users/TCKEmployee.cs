@@ -1,4 +1,4 @@
-class TCKEmployee : User
+class TCKEmployee : User, TCKEmployeeInterface
 {
-    
+    //todo
 }
