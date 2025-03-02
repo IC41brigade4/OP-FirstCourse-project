@@ -1,0 +1,4 @@
+class TCKEmployee : User
+{
+    
+}
