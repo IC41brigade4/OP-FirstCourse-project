@@ -11,4 +11,17 @@ class TCKEmployee : User, TCKEmployeeInterface
         base.getDocID();
     }
 
+    void override displayInfo()
+    {
+        base.getAge();
+        base.firstName();
+        base.lastName();
+        base.getName();
+        base.getDocID();
+        base.getMedicalExaminationResult();
+        base.getHasDeferment();
+        base.getCity();
+        base.getData();
+    }
+
 }
