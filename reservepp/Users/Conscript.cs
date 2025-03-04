@@ -10,14 +10,14 @@ class Conscript : User, ConscriptInterface
 
     void override displayInfo()
     {
-        base.getAge();
-        base.getFirstName();
-        base.getLastName();
-        base.getName();
-        base.getDocID();
-        base.getMedicalExaminationResult();
-        base.getHasDeferment();
-        base.getCity();
-        base.getData();
+        //getAge();
+        //getFirstName();
+        //getLastName();
+        //getName();
+        //getDocID();
+        //getMedicalExaminationResult();
+        //getHasDeferment();
+        //getCity();
+        //getData();
     }
 }

@@ -13,15 +13,15 @@ class TCKEmployee : User, TCKEmployeeInterface
 
     void override displayInfo()
     {
-        //base.getAge();
-        //base.firstName();
-        //base.lastName();
-        //base.getName();
-        //base.getDocID();
-        //base.getMedicalExaminationResult();
-        //base.getHasDeferment();
-        //base.getCity();
-        //base.getData();
+        //getAge();
+        //firstName();
+        //lastName();
+        //getName();
+        //getDocID();
+        //getMedicalExaminationResult();
+        //getHasDeferment();
+        //getCity();
+        //getData();
     }
 
 }

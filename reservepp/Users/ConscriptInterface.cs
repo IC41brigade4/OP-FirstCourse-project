@@ -1,7 +1,7 @@
-public interface ConscriptInterface
+public interface ConscriptInterface //IConscriptable
 {
 
     void getMobilizated(bool mobilizated);
-    void RunFromTCK();
+    void leaveArmy(bool mobilizated);
     //todo
 }
