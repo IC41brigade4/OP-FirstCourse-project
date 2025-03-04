@@ -1,8 +1,8 @@
 abstract class User
 {
-	int age, docID;
-    string firstName, lastName, medicalExaminationResult, city;
-    bool hasDeferment;
+	private int age, docID;
+    private string firstName, lastName, medicalExaminationResult, city;
+    private bool hasDeferment;
     
 	User(std::string firstName, std::string lastName, int age, int docID, std::string medicalExaminationResult, bool HasDeferment, std::string city) {
         this->firstName = firstName;
