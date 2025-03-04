@@ -62,11 +62,11 @@ abstract class User
     {
         return age;
     }
-    public string firstName()
+    public string getFirstName()
     {
         return firstName;
     }
-    public string lastName()
+    public string getLastName()
     {
         return lastName;
     }

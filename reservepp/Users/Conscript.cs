@@ -11,8 +11,8 @@ class Conscript : User, ConscriptInterface
     void override displayInfo()
     {
         base.getAge();
-        base.firstName();
-        base.lastName();
+        base.getFirstName();
+        base.getLastName();
         base.getName();
         base.getDocID();
         base.getMedicalExaminationResult();

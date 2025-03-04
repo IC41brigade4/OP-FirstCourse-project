@@ -14,8 +14,8 @@ class TCKEmployee : User, TCKEmployeeInterface
     void override displayInfo()
     {
         base.getAge();
-        base.firstName();
-        base.lastName();
+        base.getFirstName();
+        base.getLastName();
         base.getName();
         base.getDocID();
         base.getMedicalExaminationResult();

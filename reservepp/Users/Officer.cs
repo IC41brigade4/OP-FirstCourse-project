@@ -18,6 +18,14 @@ class Officer : User, OfficerInterface
     }
     void override displayInfo()
     {
-
+        base.getAge();
+        base.getFirstName();
+        base.getLastName();
+        base.getName();
+        base.getDocID();
+        base.getMedicalExaminationResult();
+        base.getHasDeferment();
+        base.getCity();
+        base.getData();
     }
 }
