@@ -25,10 +25,6 @@ abstract class User
     {
         this->age = age;
     }
-    void newmethod()
-    {
-
-    }
     void setMedicalExaminationResult(string medicalExaminationResult)
     {
         this->medicalExaminationResult = medicalExaminationResult;
