@@ -4,6 +4,7 @@ class Officer : User, OfficerInterface
             bool HasDeferment, std::string city)
         : base(std::string firstName, std::string lastName, int age, int docID, std::string medicalExaminationResult, 
             bool HasDeferment, std::string city)
+
     void makeOffer(int amount)
     {
 
