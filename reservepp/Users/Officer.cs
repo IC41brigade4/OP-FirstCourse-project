@@ -18,14 +18,6 @@ class Officer : User, OfficerInterface
     }
     void override displayInfo()
     {
-        //getAge();
-        //getFirstName();
-        //getLastName();
-        //getName();
-        //getDocID();
-        //getMedicalExaminationResult();
-        //getHasDeferment();
-        //getCity();
-        //getData();
+        
     }
 }
