@@ -45,4 +45,10 @@ public class Repository<T> : IRepository<T> where T : class
             await _context.SaveChangesAsync();
         }
     }
+
+    public async Task<IEnumerable<T>> GetSortedByName()
+    {
+        return await _dbSet.OrderBy(entity => entity.lastName).ToListAsync();
+    }
+
 }
