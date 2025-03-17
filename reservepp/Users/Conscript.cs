@@ -6,18 +6,8 @@ class Conscript : User, ConscriptInterface
             HasDeferment, string city)
     { }
 
-    //todo
-
     void override displayInfo()
     {
-        //getAge();
-        //getFirstName();
-        //getLastName();
-        //getName();
-        //getDocID();
-        //getMedicalExaminationResult();
-        //getHasDeferment();
-        //getCity();
-        //getData();
+        
     }
 }

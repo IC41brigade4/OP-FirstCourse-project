@@ -1,10 +1,10 @@
 abstract class User
 {
-	private int age, docID;
-    private string firstName, lastName, medicalExaminationResult, city;
-    private bool hasDeferment;
-    
-	User(std::string firstName, std::string lastName, int age, int docID, std::string medicalExaminationResult, bool HasDeferment, std::string city) {
+	private int age { get; set; }, docID { get; set; }
+    private string firstName, lastName, medicalExaminationResult, city { get; set; }
+    private bool hasDeferment { get; set; }
+
+User(std::string firstName, std::string lastName, int age, int docID, std::string medicalExaminationResult, bool HasDeferment, std::string city) {
         this->firstName = firstName;
         this->lastName = lastName;
         this->age = age;

@@ -8,20 +8,12 @@ class TCKEmployee : User, TCKEmployeeInterface
 
     public void CheckSoldier(int docID)
     {
-        //base.getDocID();
+        
     }
 
     void override displayInfo()
     {
-        //getAge();
-        //firstName();
-        //lastName();
-        //getName();
-        //getDocID();
-        //getMedicalExaminationResult();
-        //getHasDeferment();
-        //getCity();
-        //getData();
+        
     }
 
 }
