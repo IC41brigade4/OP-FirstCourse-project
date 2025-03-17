@@ -1,7 +1,8 @@
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
+using System.Linq.Expressions;
 
 public class Repository<T> : IRepository<T> where T : class
 {
@@ -14,41 +15,73 @@ public class Repository<T> : IRepository<T> where T : class
         _dbSet = _context.Set<T>();
     }
 
-    public async Task<T> GetByIdAsync(int id)
+    public T GetById(int id)
     {
-        return await _dbSet.FindAsync(id);
-    }
-
-    public async Task<IEnumerable<T>> GetAllAsync()
-    {
-        return await _dbSet.ToListAsync();
-    }
-
-    public async Task AddAsync(T entity)
-    {
-        await _dbSet.AddAsync(entity);
-        await _context.SaveChangesAsync();
-    }
-
-    public async Task UpdateAsync(T entity)
-    {
-        _context.Entry(entity).State = EntityState.Modified;
-        await _context.SaveChangesAsync();
-    }
-
-    public async Task DeleteAsync(int id)
-    {
-        var entity = await GetByIdAsync(id);
-        if (entity != null)
+        var entity = _dbSet.Find(id);
+        if (entity == null)
         {
-            _dbSet.Remove(entity);
-            await _context.SaveChangesAsync();
+            throw new KeyNotFoundException($"Entity with ID {id} not found.");
+        }
+        return entity;
+    }
+
+    public IEnumerable<T> GetAll()
+    {
+        return _dbSet.ToList();
+    }
+
+    public void Add(T entity)
+    {
+        try
+        {
+            _dbSet.Add(entity);
+            _context.SaveChanges();
+        }
+        catch (Exception ex)
+        {
+            // Логирование ошибки
+            throw new ApplicationException("An error occurred while adding the entity.", ex);
         }
     }
 
-    public async Task<IEnumerable<T>> GetSortedByName()
+    public void Update(T entity)
     {
-        return await _dbSet.OrderBy(entity => entity.lastName).ToListAsync();
+        try
+        {
+            _context.Entry(entity).State = EntityState.Modified;
+            _context.SaveChanges();
+        }
+        catch (Exception ex)
+        {
+            // Логирование ошибки
+            throw new ApplicationException("An error occurred while updating the entity.", ex);
+        }
     }
 
+    public void Delete(int id)
+    {
+        var entity = GetById(id);
+        if (entity == null)
+        {
+            throw new KeyNotFoundException($"Entity with ID {id} not found.");
+        }
+
+        _dbSet.Remove(entity);
+        _context.SaveChanges();
+    }
+
+    public IEnumerable<T> GetSortedByField<TKey>(Expression<Func<T, TKey>> keySelector)
+    {
+        return _dbSet.OrderBy(keySelector).ToList();
+    }
+
+    public IEnumerable<T> GetFiltered(Expression<Func<T, bool>> filter)
+    {
+        return _dbSet.Where(filter).ToList();
+    }
+
+    public void SaveChanges()
+    {
+        _context.SaveChanges();
+    }
 }
