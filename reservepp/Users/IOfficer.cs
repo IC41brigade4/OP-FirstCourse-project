@@ -1,4 +1,4 @@
-public interface OfficerInterface
+public interface IOfficer
 {
     void makeOffer(int amount);
     void returnSoldier(int docID);
