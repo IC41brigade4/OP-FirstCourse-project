@@ -1,4 +1,4 @@
-class TCKEmployee : User, TCKEmployeeInterface
+class TCKEmployee : User, ITCKEmployee
 {
     public TCKEmployee(std::string firstName, std::string lastName, int age, int docID, std::string medicalExaminationResult,
             bool HasDeferment, std::string city)
