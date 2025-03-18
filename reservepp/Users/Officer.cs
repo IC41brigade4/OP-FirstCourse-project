@@ -1,4 +1,4 @@
-class Officer : User, OfficerInterface
+class Officer : User, IOfficer
 {
     Officer(std::string firstName, std::string lastName, int age, int docID, std::string medicalExaminationResult, 
             bool HasDeferment, std::string city)

@@ -47,6 +47,7 @@ namespace reservepp
             {
                 MessageBox.Show($"ID: {product.Id}, Name: {product.Name}", "Сообщение");
             }
+            Application.Run(new OfficerForm());
         }
     }
 }
