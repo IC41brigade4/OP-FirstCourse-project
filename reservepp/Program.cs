@@ -1,16 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 namespace reservepp
 {
-    public class Product
-    {
-        public int Id { get; set; }
-        public string Name { get; set; }
-    }
-
     internal static class Program
     {
 
@@ -21,32 +12,34 @@ namespace reservepp
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new RegisterForm());
 
-            IRepository<Product> productRepository = new Repository<Product>();
-            var productService = new UserService(productRepository);
+            IRepository<User> userRepository = new Repository<User>();
+            var userService = new UserService(userRepository);
 
             // Додавання продукту
-            var apple = new Product { Name = "Apple" };
-            var banana = new Product { Name = "Banana" };
-
-            productService.AddProduct(apple);
-            productService.AddProduct(banana);
+            User officer1 = new Officer("Иван", "Иванов", 20, 12345, "Годен", false, "Кривий Ріг");
+            User officer2 = new Officer("Иван1", "Иванов1", 20, 122345, "не годен", false, "Рівний Ріг");
+            User officer3 = new Officer("Иван2", "Иванов2", 20, 3345, "Годен", false, "Прямий Ріг");
+            userService.AddUser(officer1);
+            userService.AddUser(officer2);
+            userService.AddUser(officer3);
 
             // Виводимо всі продукти
             MessageBox.Show("Products after adding:", "Сообщение");
-            foreach (var product in productService.GetAllProducts())
+            foreach (var user in userService.GetAllUsers())
             {
-                MessageBox.Show($"ID: {product.Id}, Name: {product.Name}", "Сообщение");
+                MessageBox.Show(user.GetData(), "Сообщение");
             }
 
             // Видаляємо перший продукт 
-            productService.DeleteProduct(apple.Id);
+            userService.DeleteUser(officer1.DocID);
+            userService.DeleteUser(officer2.DocID);
 
             // Виводимо продукти після видалення
             
             MessageBox.Show("After deletion:", "Сообщение");
-            foreach (var product in productService.GetAllProducts())
+            foreach (var user in userService.GetAllUsers())
             {
-                MessageBox.Show($"ID: {product.Id}, Name: {product.Name}", "Сообщение");
+                MessageBox.Show(user.GetData(), "Сообщение");
             }
             
         }

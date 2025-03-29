@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
+
 
 namespace reservepp
 {
-    internal class Repository<T> : IRepository<T> where T : class
+    public class Repository<T> : IRepository<T> where T : class
     {
         private readonly List<T> _items = new List<T>();
         private int _nextId = 1;
@@ -21,7 +21,7 @@ namespace reservepp
 
         public void Add(T entity)
         {
-            var property = entity.GetType().GetProperty("Id");
+            var property = entity.GetType().GetProperty("docID");
             if (property != null && property.PropertyType == typeof(int))
             {
                 property.SetValue(entity, _nextId++);
@@ -43,7 +43,7 @@ namespace reservepp
 
         public void Delete(int id)
         {
-            var entity = _items.FirstOrDefault(i => GetId(i) == id);
+            var entity = _items.Find(i => GetId(i) == id);
             if (entity != null)
             {
                 _items.Remove(entity);
@@ -52,7 +52,7 @@ namespace reservepp
 
         private int GetId(T entity)
         {
-            var property = entity.GetType().GetProperty("Id");
+            var property = entity.GetType().GetProperty("DocID");
             return property != null ? (int)property.GetValue(entity) : -1;
         }
 

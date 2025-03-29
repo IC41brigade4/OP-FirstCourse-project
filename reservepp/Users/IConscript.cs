@@ -1,7 +1,10 @@
-public interface ConscriptInterface //IConscriptable
+namespace reservepp
 {
+    public interface ConscriptInterface //IConscriptable
+    {
 
-    void getMobilizated(bool mobilizated);
-    void leaveArmy(bool mobilizated);
-    
+        void getMobilizated(bool mobilizated);
+        void leaveArmy(bool mobilizated);
+
+    }
 }

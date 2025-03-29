@@ -1,19 +1,31 @@
-class TCKEmployee : User, ITCKEmployee
+namespace reservepp
 {
-    public TCKEmployee(std::string firstName, std::string lastName, int age, int docID, std::string medicalExaminationResult,
-            bool HasDeferment, std::string city)
-        : base(firstName, lastName, age, docID, medicalExaminationResult,
-            HasDeferment, string city)
-    { }
-
-    public void CheckSoldier(int docID)
+    class TCKEmployee : User, ITCKEmployee
     {
-        
-    }
+        public TCKEmployee(string firstName, string lastName, int age, int docID, string medicalExaminationResult,
+                bool HasDeferment, string city)
+            : base(firstName, lastName, age, docID, medicalExaminationResult,
+                HasDeferment, city)
+        { }
 
-    void override displayInfo()
-    {
-        
-    }
+        public void CheckSoldier(int docID)
+        {
 
+        }
+
+        public override void displayInfo()
+        {
+
+        }
+
+        public void issue_permits(int docID)
+        {
+
+        }
+
+        public void provide_information(string firstName, string lastName, int age, int docID, string medicalExaminationResult, bool hasDeferment, string city)
+        {
+
+        }
+    }
 }

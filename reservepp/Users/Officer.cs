@@ -1,23 +1,28 @@
-class Officer : User, IOfficer
+using System.Collections.Generic;
+namespace reservepp
 {
-    Officer(std::string firstName, std::string lastName, int age, int docID, std::string medicalExaminationResult, 
-            bool HasDeferment, std::string city)
-        : base(firstName, lastName, age, docID, medicalExaminationResult, HasDeferment, city)
-
-    void makeOffer(int amount)
+    public class Officer : User, IOfficer
     {
+        public Officer(string firstName, string lastName, int age, int docID, string medicalExaminationResult,
+                bool HasDeferment, string city)
+            : base(firstName, lastName, age, docID, medicalExaminationResult, HasDeferment, city) { }
 
-    }
-    void returnSoldier(int docID)
-    {
+        public void makeOffer(int amount)
+        {
 
-    }
-    void returnSoldiers(List<int> docsID)
-    {
+        }
+        public void returnSoldier(int docID)
+        {
 
-    }
-    void override displayInfo()
-    {
-        
+        }
+        public void returnSoldiers(List<int> docsID)
+        {
+
+        }
+
+        public override void displayInfo()
+        {
+            
+        }
     }
 }

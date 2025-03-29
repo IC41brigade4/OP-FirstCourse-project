@@ -70,15 +70,25 @@
     <Compile Include="RegisterForm.Designer.cs">
       <DependentUpon>RegisterForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="IRepository.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\IRepository.cs" />
+    <Compile Include="Repository\Repository.cs" />
+    <Compile Include="Service\UserService.cs" />
+    <Compile Include="TCK.cs" />
     <Compile Include="TCKForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="TCKForm.Designer.cs">
       <DependentUpon>TCKForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Users\Conscript.cs" />
+    <Compile Include="Users\IConscript.cs" />
+    <Compile Include="Users\IOfficer.cs" />
+    <Compile Include="Users\ITCKEmployee.cs" />
+    <Compile Include="Users\Officer.cs" />
+    <Compile Include="Users\TCKEmployee.cs" />
+    <Compile Include="Users\User.cs" />
     <EmbeddedResource Include="ConscriptForm.resx">
       <DependentUpon>ConscriptForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -91,8 +101,6 @@
     <EmbeddedResource Include="RegisterForm.resx">
       <DependentUpon>RegisterForm.cs</DependentUpon>
     </EmbeddedResource>
-    <Compile Include="Repository.cs" />
-    <Compile Include="UserService.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -105,6 +113,7 @@
     <EmbeddedResource Include="TCKForm.resx">
       <DependentUpon>TCKForm.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="bin\Debug\reservepp.exe.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -117,6 +126,13 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Debug\reservepp.exe" />
+    <Content Include="bin\Debug\reservepp.pdb" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bin\Release\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
