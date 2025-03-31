@@ -91,7 +91,7 @@
             this.TCK_title.Name = "TCK_title";
             this.TCK_title.Size = new System.Drawing.Size(286, 38);
             this.TCK_title.TabIndex = 0;
-            this.TCK_title.Text = "TCK interface";
+            this.TCK_title.Text = "Officer interface";
             // 
             // get_inf_text
             // 

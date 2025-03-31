@@ -37,5 +37,27 @@ namespace reservepp
         {
             lastpoint = new Point(e.X, e.Y);
         }
+
+        private void login_button_Click(object sender, EventArgs e)
+        {
+            string login = login_textbox.Text;
+            string password = password_textbox.Text;
+
+
+            ConscriptForm conscriptForm = new ConscriptForm();
+            conscriptForm.Show(); // Відкриваємо нову форму
+            this.Hide();
+
+            //if (Program.letMeIn(password, int.Parse(login), userRepository))
+            //{
+            //    ConscriptForm conscriptForm = new ConscriptForm();
+            //    conscriptForm.Show(); // Відкриваємо нову форму
+            //    this.Hide();
+            //}
+            //else
+            //{
+            //    MessageBox.Show(" Невірний пароль або логін, спробуйте ще");
+            //}
+        }
     }
 }

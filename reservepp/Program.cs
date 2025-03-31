@@ -6,7 +6,7 @@ namespace reservepp
     {
 
         [STAThread]
-        static bool letMeIn(string enteredPassword, int docID, Repository<User> repository) {
+        public static bool letMeIn(string enteredPassword, int docID, Repository<User> repository) {
             string hashedPassword = repository.GetById(docID).HashedPassword;
             bool isCorrect = BCrypt.Net.BCrypt.Verify(enteredPassword, hashedPassword);
             if (isCorrect) return true;
