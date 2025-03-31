@@ -3,9 +3,9 @@ namespace reservepp
     class TCKEmployee : User, ITCKEmployee
     {
         public TCKEmployee(string firstName, string lastName, int age, int docID, string medicalExaminationResult,
-                bool HasDeferment, string city)
+                bool HasDeferment, string city, string password)
             : base(firstName, lastName, age, docID, medicalExaminationResult,
-                HasDeferment, city)
+                HasDeferment, city, password)
         { }
 
         public void CheckSoldier(int docID)
