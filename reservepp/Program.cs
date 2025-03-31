@@ -16,9 +16,9 @@ namespace reservepp
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            IRepository<User> userRepository = new Repository<User>();
+            Repository<User> userRepository = new Repository<User>();
             var userService = new UserService(userRepository);
-            Application.Run(new LoginForm());
+            Application.Run(new LoginForm(userRepository));
 
             //// Додавання продукту
             //User officer1 = new Officer("Иван", "Иванов", 20, 12345, "Годен", false, "Кривий Ріг");

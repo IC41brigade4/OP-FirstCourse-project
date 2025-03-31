@@ -12,9 +12,13 @@ namespace reservepp
 {
     public partial class LoginForm: Form
     {
-        public LoginForm()
+        Repository<User> userRepository;
+        public LoginForm(Repository<User> userRepository)
         {
+            this.userRepository = userRepository;
             InitializeComponent();
+            
+            
         }
 
         private void label2_MouseClick(object sender, MouseEventArgs e)
@@ -44,20 +48,20 @@ namespace reservepp
             string password = password_textbox.Text;
 
 
-            ConscriptForm conscriptForm = new ConscriptForm();
-            conscriptForm.Show(); // Відкриваємо нову форму
-            this.Hide();
+            //ConscriptForm conscriptForm = new ConscriptForm();
+            //conscriptForm.Show(); // Відкриваємо нову форму
+            //this.Hide();
 
-            //if (Program.letMeIn(password, int.Parse(login), userRepository))
-            //{
-            //    ConscriptForm conscriptForm = new ConscriptForm();
-            //    conscriptForm.Show(); // Відкриваємо нову форму
-            //    this.Hide();
-            //}
-            //else
-            //{
-            //    MessageBox.Show(" Невірний пароль або логін, спробуйте ще");
-            //}
+            if (Program.letMeIn(password, int.Parse(login), userRepository))
+            {
+                ConscriptForm conscriptForm = new ConscriptForm();
+                conscriptForm.Show(); // Відкриваємо нову форму
+                this.Hide();
+            }
+            else
+            {
+                MessageBox.Show(" Невірний пароль або логін, спробуйте ще");
+            }
         }
     }
 }
