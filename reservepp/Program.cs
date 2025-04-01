@@ -29,12 +29,12 @@ namespace reservepp
             var userService = new UserService(userRepository);
 
             // Додавання продукту
-            User officer1 = new Officer("Иван", "Иванов", 20, 12345, "Годен", false, "Кривий Ріг", "asd1");
-            User conscript1 = new Conscript("Иван1", "Иванов1", 20, 122345, "не годен", false, "Рівний Ріг", "asd2");
-            User officer3 = new TCKEmployee("Иван2", "Иванов2", 20, 3345, "Годен", false, "Прямий Ріг", "asd3");
+            User officer1 = new Officer("Михайло", "Драган", 24, 12345, "Придатний", false, "Кривий Ріг", "asd1");
+            User conscript1 = new Conscript("Максим", "Пловоїдік", 19, 122345, "Частково придатний", false, "Рівний Ріг", "asd2");
+            User tckEmployee1 = new TCKEmployee("Женя", "Чєрєпіца", 69, 3345, "Непридатний", false, "Прямий Ріг", "asd3");
             userService.AddUser(officer1);
             userService.AddUser(conscript1);
-            userService.AddUser(officer3);
+            userService.AddUser(tckEmployee1);
 
 
             Application.Run(new MainForm(userRepository));
