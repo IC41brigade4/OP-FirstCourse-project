@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -12,9 +13,13 @@ namespace reservepp
 {
     public partial class OfficerForm: Form
     {
-        public OfficerForm()
+        Repository<User> userRepository;
+        int DocId;
+        public OfficerForm(Repository<User> userRepository, int docId)
         {
             InitializeComponent();
+            this.userRepository = userRepository;
+            DocId = docId;
         }
 
         private void label2_MouseClick(object sender, MouseEventArgs e)

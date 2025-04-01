@@ -47,21 +47,53 @@ namespace reservepp
             string login = login_textbox.Text;
             string password = password_textbox.Text;
 
-
-            //ConscriptForm conscriptForm = new ConscriptForm();
-            //conscriptForm.Show(); // Відкриваємо нову форму
-            //this.Hide();
-
-            if (Program.letMeIn(password, int.Parse(login), userRepository))
+            if (!int.TryParse(login, out int docID))
             {
-                ConscriptForm conscriptForm = new ConscriptForm();
-                conscriptForm.Show(); // Відкриваємо нову форму
-                this.Hide();
+                MessageBox.Show("Логін має бути числом!");
+                return;
+            }
+
+            User user = userRepository.GetById(docID);
+
+            if (user == null)
+            {
+                MessageBox.Show("Користувач не знайдений!");
+                return;
+            }
+
+            if (Program.letMeIn(password, docID, userRepository))
+            {
+                if (user is Conscript)
+                {
+                    ConscriptForm conscriptForm = new ConscriptForm(userRepository, docID);
+                    conscriptForm.Show(); // Відкриваємо нову форму
+                    this.Close();
+                }
+                else if (user is Officer)
+                {
+                    OfficerForm officerForm = new OfficerForm(userRepository, docID);
+                    officerForm.Show(); // Відкриваємо нову форму
+                    this.Close();
+                }
+                else if(user is TCKEmployee)
+                {
+                    TCKForm tckForm = new TCKForm(userRepository, docID);
+                    tckForm.Show(); // Відкриваємо нову форму
+                    this.Close();
+                }
+                
             }
             else
             {
                 MessageBox.Show(" Невірний пароль або логін, спробуйте ще");
             }
+        }
+
+        private void register_button_Click(object sender, EventArgs e)
+        {
+            RegisterForm registerForm = new RegisterForm(userRepository);
+            registerForm.Show();
+            this.Close();
         }
     }
 }

@@ -12,9 +12,13 @@ namespace reservepp
 {
     public partial class TCKForm: Form
     {
-        public TCKForm()
+        Repository<User> userRepository;
+        int DocId;
+        public TCKForm(Repository<User> userRepository, int docId)
         {
             InitializeComponent();
+            this.userRepository = userRepository;
+            DocId = docId;
         }
         private void label2_MouseClick(object sender, MouseEventArgs e)
         {

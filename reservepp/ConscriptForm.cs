@@ -12,9 +12,13 @@ namespace reservepp
 {
     public partial class ConscriptForm: Form
     {
-        public ConscriptForm()
+        Repository<User> userRepository;
+        int DocId;
+        public ConscriptForm(Repository<User> userRepository, int docId)
         {
             InitializeComponent();
+            this.userRepository = userRepository;
+            DocId = docId;
         }
         private void label2_MouseClick(object sender, MouseEventArgs e)
         {

@@ -82,9 +82,9 @@
             this.login_text.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.login_text.Location = new System.Drawing.Point(27, 91);
             this.login_text.Name = "login_text";
-            this.login_text.Size = new System.Drawing.Size(80, 31);
+            this.login_text.Size = new System.Drawing.Size(259, 31);
             this.login_text.TabIndex = 1;
-            this.login_text.Text = "Login";
+            this.login_text.Text = "Login (document ID)";
             // 
             // login_textbox
             // 
@@ -140,6 +140,7 @@
             this.register_button.TabIndex = 6;
             this.register_button.Text = "Register";
             this.register_button.UseVisualStyleBackColor = false;
+            this.register_button.Click += new System.EventHandler(this.register_button_Click);
             // 
             // text_if_login
             // 
