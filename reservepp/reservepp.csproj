@@ -71,6 +71,8 @@
     <Compile Include="ConscriptForm.Designer.cs">
       <DependentUpon>ConscriptForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Data storage\IDataStorage.cs" />
+    <Compile Include="Data storage\JsonStorage.cs" />
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -25,7 +25,8 @@ namespace reservepp
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Repository<User> userRepository = new Repository<User>();
+            IDataStorage<User> dataStorage = new JsonStorage<User>();
+            Repository<User> userRepository = new Repository<User>(dataStorage);
             var userService = new UserService(userRepository);
 
             // Додавання продукту
