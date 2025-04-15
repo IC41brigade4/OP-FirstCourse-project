@@ -6,7 +6,7 @@ namespace reservepp
         private int age, docID;
         private string firstName, lastName, medicalExaminationResult, city;
         private bool hasDeferment;
-        private string hashedPassword;
+        private string hashedPassword = "";
 
         public User(string firstName, string lastName, int age, int docID, string medicalExaminationResult, bool hasDeferment, string city, string password)
         {
@@ -17,7 +17,8 @@ namespace reservepp
             this.medicalExaminationResult = medicalExaminationResult;
             this.hasDeferment = hasDeferment;
             this.city = city;
-            this.hashedPassword = BCrypt.Net.BCrypt.HashPassword(password);
+            if(password != null)
+                this.hashedPassword = BCrypt.Net.BCrypt.HashPassword(password);
         }
 
         public int Age { get => age; set => age = value; }

@@ -9,6 +9,7 @@ namespace reservepp
         void Add(T entity);
         void Update(T entity);
         void Delete(int id);
+        
     }
 
 }

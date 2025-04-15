@@ -18,17 +18,20 @@ namespace reservepp
 		public void AddUser(User user)
 		{
 			_repository.Add(user);
+			
 		}
 
 		public void UpdateUser(User user)
 		{
 			_repository.Update(user);
-		}
+            
+        }
 
 		public void DeleteUser(int id)
 		{
 			
 			_repository.Delete(id);
-		}
+            
+        }
 	}
 }

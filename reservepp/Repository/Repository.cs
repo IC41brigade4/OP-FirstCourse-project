@@ -22,12 +22,12 @@ namespace reservepp
         public void Add(T entity)
         {
             _storage.Add(entity);
-            _storage.Save();
+            
         }
         public void Update(T entity)
         {
             _storage.Update(entity);
-            _storage.Save();
+            
         }
         public void Delete(int id)
         {
