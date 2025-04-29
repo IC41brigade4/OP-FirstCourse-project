@@ -109,5 +109,10 @@ namespace reservepp
             this.Inf_panel.Visible = false;
             this.gotit_btn.Visible = false;
         }
+
+        private void permission_btn_Click(object sender, EventArgs e)
+        {
+           // тут треба зробити просто цикл перебору всіх значень у списку виводячи їх та додати лічильник який теж використовується для виведення та оновлювати значення в списку на погодження чи відмови
+        }
     }
 }

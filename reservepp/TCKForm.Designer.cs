@@ -55,9 +55,12 @@
             this.permission_btn = new System.Windows.Forms.Button();
             this.permission_text = new System.Windows.Forms.Label();
             this.inftobd_btn = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.Text_for_permision = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.Inf_panel.SuspendLayout();
             this.Inf_panel_change.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -328,12 +331,13 @@
             this.permission_btn.BackColor = System.Drawing.Color.Brown;
             this.permission_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.permission_btn.ForeColor = System.Drawing.SystemColors.Control;
-            this.permission_btn.Location = new System.Drawing.Point(18, 481);
+            this.permission_btn.Location = new System.Drawing.Point(249, 486);
             this.permission_btn.Name = "permission_btn";
             this.permission_btn.Size = new System.Drawing.Size(214, 38);
             this.permission_btn.TabIndex = 15;
             this.permission_btn.Text = "Send permission";
             this.permission_btn.UseVisualStyleBackColor = false;
+            this.permission_btn.Click += new System.EventHandler(this.permission_btn_Click);
             // 
             // permission_text
             // 
@@ -350,19 +354,40 @@
             this.inftobd_btn.BackColor = System.Drawing.Color.Brown;
             this.inftobd_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.inftobd_btn.ForeColor = System.Drawing.SystemColors.Control;
-            this.inftobd_btn.Location = new System.Drawing.Point(18, 525);
+            this.inftobd_btn.Location = new System.Drawing.Point(17, 486);
             this.inftobd_btn.Name = "inftobd_btn";
             this.inftobd_btn.Size = new System.Drawing.Size(214, 38);
             this.inftobd_btn.TabIndex = 16;
             this.inftobd_btn.Text = "Send information to BD";
             this.inftobd_btn.UseVisualStyleBackColor = false;
             // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.SystemColors.Control;
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel2.Controls.Add(this.Text_for_permision);
+            this.panel2.Location = new System.Drawing.Point(249, 530);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(214, 106);
+            this.panel2.TabIndex = 9;
+            // 
+            // Text_for_permision
+            // 
+            this.Text_for_permision.AutoSize = true;
+            this.Text_for_permision.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Text_for_permision.Location = new System.Drawing.Point(12, 12);
+            this.Text_for_permision.Name = "Text_for_permision";
+            this.Text_for_permision.Size = new System.Drawing.Size(22, 20);
+            this.Text_for_permision.TabIndex = 5;
+            this.Text_for_permision.Text = "1:";
+            // 
             // TCKForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightCoral;
-            this.ClientSize = new System.Drawing.Size(700, 587);
+            this.ClientSize = new System.Drawing.Size(700, 680);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.inftobd_btn);
             this.Controls.Add(this.permission_btn);
             this.Controls.Add(this.permission_text);
@@ -386,6 +411,8 @@
             this.Inf_panel.PerformLayout();
             this.Inf_panel_change.ResumeLayout(false);
             this.Inf_panel_change.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -420,6 +447,8 @@
         private System.Windows.Forms.Button permission_btn;
         private System.Windows.Forms.Label permission_text;
         private System.Windows.Forms.Button inftobd_btn;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label Text_for_permision;
     }
 }
 
