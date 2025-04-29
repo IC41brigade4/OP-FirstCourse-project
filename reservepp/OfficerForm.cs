@@ -15,11 +15,13 @@ namespace reservepp
     {
         Repository<User> userRepository;
         int DocId;
+        int person_id;
         public OfficerForm(Repository<User> userRepository, int docId)
         {
             InitializeComponent();
             this.userRepository = userRepository;
             DocId = docId;
+            person_id = DocId;
         }
 
         private void label2_MouseClick(object sender, MouseEventArgs e)
@@ -52,7 +54,7 @@ namespace reservepp
             this.Inf_panel.Visible = true;
             this.gotit_btn.Visible = true;
 
-            User user = userRepository.GetById(DocId);
+            User user = userRepository.GetById(person_id);
 
             if (user == null)
             {
@@ -86,7 +88,7 @@ namespace reservepp
             this.Inf_panel_change.Visible = true;
             this.Change_btn.Visible = true;
 
-            User user = userRepository.GetById(DocId);
+            User user = userRepository.GetById(person_id);
 
             if (user == null)
             {
@@ -112,6 +114,30 @@ namespace reservepp
         {
             this.Inf_panel.Visible = false;
             this.gotit_btn.Visible = false;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            person_id = DocId;
+            this.enter_doc_textbox.Visible = false;
+            this.enter_doc_text.Visible = false;
+            this.save_doc_btn.Visible = false;
+        }
+
+        private void Conscript_inf_Click_1(object sender, EventArgs e)
+        {
+            this.enter_doc_textbox.Visible = true;
+            this.enter_doc_text.Visible = true;
+            this.save_doc_btn.Visible = true;
+        }
+
+        private void save_doc_btn_Click(object sender, EventArgs e)
+        {
+            if (!int.TryParse(enter_doc_textbox.Text, out person_id))
+            {
+                MessageBox.Show("Документ має номер а не незрозумілі символи");
+                return;
+            }
         }
     }
 }
