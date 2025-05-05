@@ -65,14 +65,7 @@ namespace reservepp
 
             if (employee_key == real_key)
             {
-                if (radioOfficer.Checked)
-                {
-                    user = new Officer("Name", "Secondname", 20, docID, "Годен", false, "City", password);
-                }
-                else if (radiotck.Checked)
-                {
-                    user = new TCKEmployee("Name", "Secondname", 20, docID, "Годен", false, "City", password);
-                }
+                    user = new Officer("Name", "Secondname", 20, docID, "Годен", false, "City", password);   
             }
             
             userRepository.Add(user);

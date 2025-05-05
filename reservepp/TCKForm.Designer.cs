@@ -65,7 +65,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.Brown;
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.panel1.Controls.Add(this.button_exit);
             this.panel1.Controls.Add(this.TCK_title);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -90,17 +90,18 @@
             // TCK_title
             // 
             this.TCK_title.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.TCK_title.ForeColor = System.Drawing.SystemColors.Control;
+            this.TCK_title.ForeColor = System.Drawing.Color.Bisque;
             this.TCK_title.Location = new System.Drawing.Point(12, 18);
             this.TCK_title.Name = "TCK_title";
             this.TCK_title.Size = new System.Drawing.Size(286, 38);
             this.TCK_title.TabIndex = 0;
-            this.TCK_title.Text = "TCK interface";
+            this.TCK_title.Text = "TCK employee";
             // 
             // get_inf_text
             // 
             this.get_inf_text.AutoSize = true;
             this.get_inf_text.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.get_inf_text.ForeColor = System.Drawing.Color.SaddleBrown;
             this.get_inf_text.Location = new System.Drawing.Point(17, 96);
             this.get_inf_text.Name = "get_inf_text";
             this.get_inf_text.Size = new System.Drawing.Size(281, 24);
@@ -109,9 +110,10 @@
             // 
             // get_inf_btn
             // 
-            this.get_inf_btn.BackColor = System.Drawing.Color.Brown;
+            this.get_inf_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.get_inf_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.get_inf_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.get_inf_btn.ForeColor = System.Drawing.SystemColors.Control;
+            this.get_inf_btn.ForeColor = System.Drawing.Color.Bisque;
             this.get_inf_btn.Location = new System.Drawing.Point(21, 132);
             this.get_inf_btn.Name = "get_inf_btn";
             this.get_inf_btn.Size = new System.Drawing.Size(277, 38);
@@ -122,8 +124,7 @@
             // 
             // Inf_panel
             // 
-            this.Inf_panel.BackColor = System.Drawing.SystemColors.Control;
-            this.Inf_panel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.Inf_panel.BackColor = System.Drawing.Color.BurlyWood;
             this.Inf_panel.Controls.Add(this.city_text);
             this.Inf_panel.Controls.Add(this.docid_text);
             this.Inf_panel.Controls.Add(this.age_text);
@@ -139,6 +140,7 @@
             // 
             this.city_text.AutoSize = true;
             this.city_text.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.city_text.ForeColor = System.Drawing.Color.SaddleBrown;
             this.city_text.Location = new System.Drawing.Point(14, 134);
             this.city_text.Name = "city_text";
             this.city_text.Size = new System.Drawing.Size(43, 20);
@@ -149,6 +151,7 @@
             // 
             this.docid_text.AutoSize = true;
             this.docid_text.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.docid_text.ForeColor = System.Drawing.Color.SaddleBrown;
             this.docid_text.Location = new System.Drawing.Point(14, 105);
             this.docid_text.Name = "docid_text";
             this.docid_text.Size = new System.Drawing.Size(60, 20);
@@ -159,6 +162,7 @@
             // 
             this.age_text.AutoSize = true;
             this.age_text.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.age_text.ForeColor = System.Drawing.Color.SaddleBrown;
             this.age_text.Location = new System.Drawing.Point(14, 74);
             this.age_text.Name = "age_text";
             this.age_text.Size = new System.Drawing.Size(46, 20);
@@ -169,6 +173,7 @@
             // 
             this.lastname_text.AutoSize = true;
             this.lastname_text.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lastname_text.ForeColor = System.Drawing.Color.SaddleBrown;
             this.lastname_text.Location = new System.Drawing.Point(14, 45);
             this.lastname_text.Name = "lastname_text";
             this.lastname_text.Size = new System.Drawing.Size(92, 20);
@@ -179,6 +184,7 @@
             // 
             this.firstname_text.AutoSize = true;
             this.firstname_text.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.firstname_text.ForeColor = System.Drawing.Color.SaddleBrown;
             this.firstname_text.Location = new System.Drawing.Point(14, 16);
             this.firstname_text.Name = "firstname_text";
             this.firstname_text.Size = new System.Drawing.Size(92, 20);
@@ -187,9 +193,10 @@
             // 
             // change_inf_btn
             // 
-            this.change_inf_btn.BackColor = System.Drawing.Color.Brown;
+            this.change_inf_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.change_inf_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.change_inf_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.change_inf_btn.ForeColor = System.Drawing.SystemColors.Control;
+            this.change_inf_btn.ForeColor = System.Drawing.Color.Bisque;
             this.change_inf_btn.Location = new System.Drawing.Point(355, 132);
             this.change_inf_btn.Name = "change_inf_btn";
             this.change_inf_btn.Size = new System.Drawing.Size(306, 38);
@@ -202,6 +209,7 @@
             // 
             this.change_inf_text.AutoSize = true;
             this.change_inf_text.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.change_inf_text.ForeColor = System.Drawing.Color.SaddleBrown;
             this.change_inf_text.Location = new System.Drawing.Point(413, 96);
             this.change_inf_text.Name = "change_inf_text";
             this.change_inf_text.Size = new System.Drawing.Size(174, 24);
@@ -210,8 +218,7 @@
             // 
             // Inf_panel_change
             // 
-            this.Inf_panel_change.BackColor = System.Drawing.SystemColors.Control;
-            this.Inf_panel_change.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.Inf_panel_change.BackColor = System.Drawing.Color.BurlyWood;
             this.Inf_panel_change.Controls.Add(this.city_textbox);
             this.Inf_panel_change.Controls.Add(this.age_textbox);
             this.Inf_panel_change.Controls.Add(this.lastname_textbox);
@@ -262,6 +269,7 @@
             // 
             this.city_text2.AutoSize = true;
             this.city_text2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.city_text2.ForeColor = System.Drawing.Color.SaddleBrown;
             this.city_text2.Location = new System.Drawing.Point(14, 105);
             this.city_text2.Name = "city_text2";
             this.city_text2.Size = new System.Drawing.Size(43, 20);
@@ -272,6 +280,7 @@
             // 
             this.age_text2.AutoSize = true;
             this.age_text2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.age_text2.ForeColor = System.Drawing.Color.SaddleBrown;
             this.age_text2.Location = new System.Drawing.Point(14, 74);
             this.age_text2.Name = "age_text2";
             this.age_text2.Size = new System.Drawing.Size(46, 20);
@@ -282,6 +291,7 @@
             // 
             this.lastname_text2.AutoSize = true;
             this.lastname_text2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lastname_text2.ForeColor = System.Drawing.Color.SaddleBrown;
             this.lastname_text2.Location = new System.Drawing.Point(14, 45);
             this.lastname_text2.Name = "lastname_text2";
             this.lastname_text2.Size = new System.Drawing.Size(92, 20);
@@ -292,6 +302,7 @@
             // 
             this.firstname_text2.AutoSize = true;
             this.firstname_text2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.firstname_text2.ForeColor = System.Drawing.Color.SaddleBrown;
             this.firstname_text2.Location = new System.Drawing.Point(14, 16);
             this.firstname_text2.Name = "firstname_text2";
             this.firstname_text2.Size = new System.Drawing.Size(92, 20);
@@ -300,9 +311,10 @@
             // 
             // Change_btn
             // 
-            this.Change_btn.BackColor = System.Drawing.Color.Brown;
+            this.Change_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.Change_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Change_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Change_btn.ForeColor = System.Drawing.SystemColors.Control;
+            this.Change_btn.ForeColor = System.Drawing.Color.Bisque;
             this.Change_btn.Location = new System.Drawing.Point(434, 378);
             this.Change_btn.Name = "Change_btn";
             this.Change_btn.Size = new System.Drawing.Size(136, 35);
@@ -314,9 +326,10 @@
             // 
             // gotit_btn
             // 
-            this.gotit_btn.BackColor = System.Drawing.Color.Brown;
+            this.gotit_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.gotit_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.gotit_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.gotit_btn.ForeColor = System.Drawing.SystemColors.Control;
+            this.gotit_btn.ForeColor = System.Drawing.Color.Bisque;
             this.gotit_btn.Location = new System.Drawing.Point(92, 378);
             this.gotit_btn.Name = "gotit_btn";
             this.gotit_btn.Size = new System.Drawing.Size(136, 35);
@@ -328,9 +341,10 @@
             // 
             // permission_btn
             // 
-            this.permission_btn.BackColor = System.Drawing.Color.Brown;
+            this.permission_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.permission_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.permission_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.permission_btn.ForeColor = System.Drawing.SystemColors.Control;
+            this.permission_btn.ForeColor = System.Drawing.Color.Bisque;
             this.permission_btn.Location = new System.Drawing.Point(249, 486);
             this.permission_btn.Name = "permission_btn";
             this.permission_btn.Size = new System.Drawing.Size(214, 38);
@@ -343,6 +357,7 @@
             // 
             this.permission_text.AutoSize = true;
             this.permission_text.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.permission_text.ForeColor = System.Drawing.Color.SaddleBrown;
             this.permission_text.Location = new System.Drawing.Point(17, 445);
             this.permission_text.Name = "permission_text";
             this.permission_text.Size = new System.Drawing.Size(355, 24);
@@ -351,9 +366,10 @@
             // 
             // inftobd_btn
             // 
-            this.inftobd_btn.BackColor = System.Drawing.Color.Brown;
+            this.inftobd_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.inftobd_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.inftobd_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.inftobd_btn.ForeColor = System.Drawing.SystemColors.Control;
+            this.inftobd_btn.ForeColor = System.Drawing.Color.Bisque;
             this.inftobd_btn.Location = new System.Drawing.Point(17, 486);
             this.inftobd_btn.Name = "inftobd_btn";
             this.inftobd_btn.Size = new System.Drawing.Size(214, 38);
@@ -363,8 +379,7 @@
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.SystemColors.Control;
-            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel2.BackColor = System.Drawing.Color.BurlyWood;
             this.panel2.Controls.Add(this.Text_for_permision);
             this.panel2.Location = new System.Drawing.Point(249, 530);
             this.panel2.Name = "panel2";
@@ -375,6 +390,7 @@
             // 
             this.Text_for_permision.AutoSize = true;
             this.Text_for_permision.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Text_for_permision.ForeColor = System.Drawing.Color.SaddleBrown;
             this.Text_for_permision.Location = new System.Drawing.Point(12, 12);
             this.Text_for_permision.Name = "Text_for_permision";
             this.Text_for_permision.Size = new System.Drawing.Size(22, 20);
@@ -385,7 +401,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.LightCoral;
+            this.BackColor = System.Drawing.Color.Bisque;
             this.ClientSize = new System.Drawing.Size(700, 680);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.inftobd_btn);

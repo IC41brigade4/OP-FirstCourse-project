@@ -34,14 +34,12 @@
             this.text_if_login = new System.Windows.Forms.Label();
             this.key_label = new System.Windows.Forms.Label();
             this.key_textbox = new System.Windows.Forms.TextBox();
-            this.radioOfficer = new System.Windows.Forms.RadioButton();
-            this.radiotck = new System.Windows.Forms.RadioButton();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.Brown;
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.panel1.Controls.Add(this.button_exit);
             this.panel1.Controls.Add(this.register_title);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -66,7 +64,7 @@
             // register_title
             // 
             this.register_title.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.register_title.ForeColor = System.Drawing.SystemColors.Control;
+            this.register_title.ForeColor = System.Drawing.Color.Bisque;
             this.register_title.Location = new System.Drawing.Point(12, 18);
             this.register_title.Name = "register_title";
             this.register_title.Size = new System.Drawing.Size(153, 38);
@@ -77,7 +75,7 @@
             // 
             this.login_text.AutoSize = true;
             this.login_text.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.login_text.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.login_text.ForeColor = System.Drawing.Color.SaddleBrown;
             this.login_text.Location = new System.Drawing.Point(27, 91);
             this.login_text.Name = "login_text";
             this.login_text.Size = new System.Drawing.Size(259, 31);
@@ -86,6 +84,7 @@
             // 
             // login_textbox
             // 
+            this.login_textbox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.login_textbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.login_textbox.Location = new System.Drawing.Point(33, 136);
             this.login_textbox.Multiline = true;
@@ -95,8 +94,9 @@
             // 
             // password_textbox
             // 
+            this.password_textbox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.password_textbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.password_textbox.Location = new System.Drawing.Point(33, 241);
+            this.password_textbox.Location = new System.Drawing.Point(33, 230);
             this.password_textbox.Multiline = true;
             this.password_textbox.Name = "password_textbox";
             this.password_textbox.PasswordChar = '*';
@@ -107,8 +107,8 @@
             // 
             this.password_text.AutoSize = true;
             this.password_text.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.password_text.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.password_text.Location = new System.Drawing.Point(27, 197);
+            this.password_text.ForeColor = System.Drawing.Color.SaddleBrown;
+            this.password_text.Location = new System.Drawing.Point(27, 186);
             this.password_text.Name = "password_text";
             this.password_text.Size = new System.Drawing.Size(134, 31);
             this.password_text.TabIndex = 3;
@@ -116,9 +116,12 @@
             // 
             // register_button
             // 
-            this.register_button.BackColor = System.Drawing.Color.Brown;
+            this.register_button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.register_button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.register_button.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.register_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.register_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.register_button.ForeColor = System.Drawing.SystemColors.Control;
+            this.register_button.ForeColor = System.Drawing.Color.Bisque;
             this.register_button.Location = new System.Drawing.Point(33, 413);
             this.register_button.Name = "register_button";
             this.register_button.Size = new System.Drawing.Size(348, 46);
@@ -129,9 +132,11 @@
             // 
             // login_button
             // 
-            this.login_button.BackColor = System.Drawing.Color.Brown;
+            this.login_button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.login_button.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.login_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.login_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.login_button.ForeColor = System.Drawing.SystemColors.Control;
+            this.login_button.ForeColor = System.Drawing.Color.Bisque;
             this.login_button.Location = new System.Drawing.Point(154, 508);
             this.login_button.Name = "login_button";
             this.login_button.Size = new System.Drawing.Size(111, 37);
@@ -144,7 +149,7 @@
             // 
             this.text_if_login.AutoSize = true;
             this.text_if_login.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.text_if_login.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.text_if_login.ForeColor = System.Drawing.Color.SaddleBrown;
             this.text_if_login.Location = new System.Drawing.Point(81, 477);
             this.text_if_login.Name = "text_if_login";
             this.text_if_login.Size = new System.Drawing.Size(243, 18);
@@ -156,55 +161,30 @@
             // 
             this.key_label.AutoSize = true;
             this.key_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.key_label.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.key_label.Location = new System.Drawing.Point(29, 314);
+            this.key_label.ForeColor = System.Drawing.Color.SaddleBrown;
+            this.key_label.Location = new System.Drawing.Point(29, 298);
             this.key_label.Name = "key_label";
-            this.key_label.Size = new System.Drawing.Size(157, 24);
+            this.key_label.Size = new System.Drawing.Size(240, 24);
             this.key_label.TabIndex = 8;
-            this.key_label.Text = "Key for employee";
+            this.key_label.Text = "Key for employee (optional)";
             // 
             // key_textbox
             // 
+            this.key_textbox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.key_textbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.key_textbox.Location = new System.Drawing.Point(33, 341);
+            this.key_textbox.Location = new System.Drawing.Point(33, 325);
             this.key_textbox.Multiline = true;
             this.key_textbox.Name = "key_textbox";
             this.key_textbox.PasswordChar = '*';
-            this.key_textbox.Size = new System.Drawing.Size(232, 26);
+            this.key_textbox.Size = new System.Drawing.Size(232, 41);
             this.key_textbox.TabIndex = 9;
-            // 
-            // radioOfficer
-            // 
-            this.radioOfficer.AutoSize = true;
-            this.radioOfficer.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.radioOfficer.Location = new System.Drawing.Point(33, 373);
-            this.radioOfficer.Name = "radioOfficer";
-            this.radioOfficer.Size = new System.Drawing.Size(70, 22);
-            this.radioOfficer.TabIndex = 10;
-            this.radioOfficer.TabStop = true;
-            this.radioOfficer.Text = "Officer";
-            this.radioOfficer.UseVisualStyleBackColor = true;
-            // 
-            // radiotck
-            // 
-            this.radiotck.AutoSize = true;
-            this.radiotck.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.radiotck.Location = new System.Drawing.Point(139, 373);
-            this.radiotck.Name = "radiotck";
-            this.radiotck.Size = new System.Drawing.Size(126, 22);
-            this.radiotck.TabIndex = 11;
-            this.radiotck.TabStop = true;
-            this.radiotck.Text = "TCK Employee";
-            this.radiotck.UseVisualStyleBackColor = true;
             // 
             // RegisterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.LightCoral;
+            this.BackColor = System.Drawing.Color.Bisque;
             this.ClientSize = new System.Drawing.Size(411, 569);
-            this.Controls.Add(this.radiotck);
-            this.Controls.Add(this.radioOfficer);
             this.Controls.Add(this.key_textbox);
             this.Controls.Add(this.key_label);
             this.Controls.Add(this.text_if_login);
@@ -241,8 +221,6 @@
         private System.Windows.Forms.Label text_if_login;
         private System.Windows.Forms.Label key_label;
         private System.Windows.Forms.TextBox key_textbox;
-        private System.Windows.Forms.RadioButton radioOfficer;
-        private System.Windows.Forms.RadioButton radiotck;
     }
 }
 

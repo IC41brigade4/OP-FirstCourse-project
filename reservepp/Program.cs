@@ -1,5 +1,4 @@
 ﻿using System;
-using System.IO;
 using System.Windows.Forms;
 namespace reservepp
 {
@@ -21,9 +20,9 @@ namespace reservepp
             bool isCorrect = BCrypt.Net.BCrypt.Verify(enteredPassword, hashedPassword);
             return isCorrect;
         }
-
-        static void Main()
-        {
+                                           
+        static void Main()                 
+        {                                  
             string filePath = "users.json";
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
@@ -31,15 +30,15 @@ namespace reservepp
             Repository<User> userRepository = new Repository<User>(dataStorage);
             var userService = new UserService(userRepository);
 
-            // Додавання продукту
             //User officer1 = new Officer("Михайло", "Драган", 24, 12345, "Придатний", false, "Кривий Ріг", "asd1");
             //User conscript1 = new Conscript("Максим", "Пловоїдік", 19, 122345, "Частково придатний", false, "Рівний Ріг", "asd2");
             //User tckEmployee1 = new TCKEmployee("Женя", "Чєрєпіца", 69, 3345, "Непридатний", false, "Прямий Ріг", "asd3");
             //userService.AddUser(officer1);
             //userService.AddUser(conscript1);
             //userService.AddUser(tckEmployee1);
-            Application.Run(new MainForm(userRepository));
 
+            Application.Run(new MainForm(userRepository));
+            Application.Exit();
         }
     }
 }

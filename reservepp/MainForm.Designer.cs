@@ -40,7 +40,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.Brown;
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.panel1.Controls.Add(this.button_exit);
             this.panel1.Controls.Add(this.Main_title);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -65,19 +65,20 @@
             // Main_title
             // 
             this.Main_title.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Main_title.ForeColor = System.Drawing.SystemColors.Control;
+            this.Main_title.ForeColor = System.Drawing.Color.Bisque;
             this.Main_title.Location = new System.Drawing.Point(12, 18);
             this.Main_title.Name = "Main_title";
             this.Main_title.Size = new System.Drawing.Size(286, 38);
             this.Main_title.TabIndex = 0;
-            this.Main_title.Text = "Main program";
+            this.Main_title.Text = "Reserve++";
             // 
             // login_button
             // 
-            this.login_button.BackColor = System.Drawing.Color.Brown;
+            this.login_button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.login_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.login_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.login_button.ForeColor = System.Drawing.SystemColors.Control;
-            this.login_button.Location = new System.Drawing.Point(196, 328);
+            this.login_button.ForeColor = System.Drawing.Color.Bisque;
+            this.login_button.Location = new System.Drawing.Point(209, 430);
             this.login_button.Name = "login_button";
             this.login_button.Size = new System.Drawing.Size(277, 46);
             this.login_button.TabIndex = 6;
@@ -87,10 +88,11 @@
             // 
             // register_button
             // 
-            this.register_button.BackColor = System.Drawing.Color.Brown;
+            this.register_button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.register_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.register_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.register_button.ForeColor = System.Drawing.SystemColors.Control;
-            this.register_button.Location = new System.Drawing.Point(196, 255);
+            this.register_button.ForeColor = System.Drawing.Color.Bisque;
+            this.register_button.Location = new System.Drawing.Point(209, 357);
             this.register_button.Name = "register_button";
             this.register_button.Size = new System.Drawing.Size(277, 46);
             this.register_button.TabIndex = 7;
@@ -102,8 +104,8 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label1.Location = new System.Drawing.Point(176, 94);
+            this.label1.ForeColor = System.Drawing.Color.SaddleBrown;
+            this.label1.Location = new System.Drawing.Point(185, 135);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(333, 33);
             this.label1.TabIndex = 8;
@@ -112,8 +114,8 @@
             // label2
             // 
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label2.Location = new System.Drawing.Point(103, 134);
+            this.label2.ForeColor = System.Drawing.Color.SaddleBrown;
+            this.label2.Location = new System.Drawing.Point(112, 175);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(468, 78);
             this.label2.TabIndex = 9;
@@ -124,7 +126,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.LightCoral;
+            this.BackColor = System.Drawing.Color.Bisque;
             this.ClientSize = new System.Drawing.Size(700, 587);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);

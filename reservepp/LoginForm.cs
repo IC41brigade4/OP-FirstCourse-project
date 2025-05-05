@@ -95,5 +95,15 @@ namespace reservepp
             registerForm.Show();
             this.Close();
         }
+
+        private void password_text_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void password_textbox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

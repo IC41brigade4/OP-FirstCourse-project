@@ -48,11 +48,11 @@ namespace reservepp
         private void get_inf_btn_Click(object sender, EventArgs e)
         {
             this.Inf_panel.Visible = true;
-            this.gotit_btn.Visible = true;
+            //this.gotit_btn.Visible = true;
             // need to add inf to textfields
 
             this.Inf_panel.Visible = true;
-            this.gotit_btn.Visible = true;
+            //this.gotit_btn.Visible = true;
 
             User user = userRepository.GetById(person_id);
 
@@ -113,7 +113,7 @@ namespace reservepp
         private void gotit_btn_Click(object sender, EventArgs e)
         {
             this.Inf_panel.Visible = false;
-            this.gotit_btn.Visible = false;
+           // this.gotit_btn.Visible = false;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -138,6 +138,12 @@ namespace reservepp
                 MessageBox.Show("Документ має номер а не незрозумілі символи");
                 return;
             }
+        }
+
+        private void permission_btn_Click(object sender, EventArgs e)
+        {
+            OfficerOrder officerOrder = new OfficerOrder();
+            officerOrder.Show(); // Відкриваємо нову форму
         }
     }
 }
