@@ -54,22 +54,43 @@ namespace reservepp
             string login = login_textbox.Text;
             string password = password_textbox.Text;
             string employee_key = key_textbox.Text;
-            string real_key = "employee";
+            string officer_key = "officer";
+            string tck_key = "tck";
 
             if (!int.TryParse(login, out int docID))
             {
                 MessageBox.Show("Логін має бути числом!");
                 return;
             }
-            User user = new Conscript("Name", "Secondname", 20, docID, "Годен", false, "City", password); ;
+            User user = new Conscript("Name", "Secondname", 20, docID, "Годен", false, "City", password);
 
-            if (employee_key == real_key)
+            if (employee_key == officer_key)
             {
-                    user = new Officer("Name", "Secondname", 20, docID, "Годен", false, "City", password);   
+                user = new Officer("Name", "Secondname", 20, docID, "Годен", false, "City", password);   
+            } 
+            else if (employee_key == tck_key)
+            {
+                user = new TCKEmployee("Name", "Secondname", 20, docID, "Годен", false, "City", password);
             }
-            
-            userRepository.Add(user);
-            MessageBox.Show("Користувач створений. Можете перейти та змінити інформацію.");
+
+            if (employee_key != "" && employee_key != officer_key && employee_key != tck_key)
+            {
+                MessageBox.Show("Такого ключа не існує!");
+            }
+            else
+            {
+                User dublicate = userRepository.GetById(docID);
+
+                if (dublicate != null)
+                {
+                    MessageBox.Show($"Користувач із docID = {docID} вже є оберіть інше.");
+                }
+                else
+                {
+                    userRepository.Add(user);
+                    MessageBox.Show("Користувач створений. Можете перейти та змінити інформацію.");
+                }
+            }
         }
     }
 }

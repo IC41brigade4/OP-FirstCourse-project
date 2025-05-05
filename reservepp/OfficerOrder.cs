@@ -17,11 +17,26 @@ namespace reservepp
         {
             InitializeComponent();
         }
+        private void OfficerOrderForm_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                this.Left += e.X - lastpoint.X;
+                this.Top += e.Y - lastpoint.Y;
+            }
+        }
+
+        Point lastpoint;
+
+        private void OfficerOrderForm_MouseDown(object sender, MouseEventArgs e)
+        {
+            lastpoint = new Point(e.X, e.Y);
+        }
 
         private void permission_btn_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Ваша заявка надіслана! \nОчікуйте її розгляду найближчим часом", "Заявка на поповнення", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            this.Close();
+            this.Hide();
         }
     }
 }

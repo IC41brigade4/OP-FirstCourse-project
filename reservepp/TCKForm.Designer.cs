@@ -51,7 +51,6 @@
             this.lastname_text2 = new System.Windows.Forms.Label();
             this.firstname_text2 = new System.Windows.Forms.Label();
             this.Change_btn = new System.Windows.Forms.Button();
-            this.gotit_btn = new System.Windows.Forms.Button();
             this.permission_btn = new System.Windows.Forms.Button();
             this.permission_text = new System.Windows.Forms.Label();
             this.inftobd_btn = new System.Windows.Forms.Button();
@@ -120,7 +119,6 @@
             this.get_inf_btn.TabIndex = 7;
             this.get_inf_btn.Text = "Get all information";
             this.get_inf_btn.UseVisualStyleBackColor = false;
-            this.get_inf_btn.Click += new System.EventHandler(this.get_inf_btn_Click);
             // 
             // Inf_panel
             // 
@@ -134,7 +132,6 @@
             this.Inf_panel.Name = "Inf_panel";
             this.Inf_panel.Size = new System.Drawing.Size(277, 174);
             this.Inf_panel.TabIndex = 8;
-            this.Inf_panel.Visible = false;
             // 
             // city_text
             // 
@@ -203,7 +200,6 @@
             this.change_inf_btn.TabIndex = 10;
             this.change_inf_btn.Text = "Change information";
             this.change_inf_btn.UseVisualStyleBackColor = false;
-            this.change_inf_btn.Click += new System.EventHandler(this.change_inf_btn_Click);
             // 
             // change_inf_text
             // 
@@ -231,7 +227,6 @@
             this.Inf_panel_change.Name = "Inf_panel_change";
             this.Inf_panel_change.Size = new System.Drawing.Size(306, 174);
             this.Inf_panel_change.TabIndex = 11;
-            this.Inf_panel_change.Visible = false;
             // 
             // city_textbox
             // 
@@ -321,23 +316,7 @@
             this.Change_btn.TabIndex = 12;
             this.Change_btn.Text = "Change";
             this.Change_btn.UseVisualStyleBackColor = false;
-            this.Change_btn.Visible = false;
             this.Change_btn.Click += new System.EventHandler(this.Change_btn_Click);
-            // 
-            // gotit_btn
-            // 
-            this.gotit_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.gotit_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.gotit_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.gotit_btn.ForeColor = System.Drawing.Color.Bisque;
-            this.gotit_btn.Location = new System.Drawing.Point(92, 378);
-            this.gotit_btn.Name = "gotit_btn";
-            this.gotit_btn.Size = new System.Drawing.Size(136, 35);
-            this.gotit_btn.TabIndex = 13;
-            this.gotit_btn.Text = "Got it";
-            this.gotit_btn.UseVisualStyleBackColor = false;
-            this.gotit_btn.Visible = false;
-            this.gotit_btn.Click += new System.EventHandler(this.gotit_btn_Click);
             // 
             // permission_btn
             // 
@@ -407,7 +386,6 @@
             this.Controls.Add(this.inftobd_btn);
             this.Controls.Add(this.permission_btn);
             this.Controls.Add(this.permission_text);
-            this.Controls.Add(this.gotit_btn);
             this.Controls.Add(this.Change_btn);
             this.Controls.Add(this.Inf_panel_change);
             this.Controls.Add(this.change_inf_btn);
@@ -459,7 +437,6 @@
         private System.Windows.Forms.Label lastname_text2;
         private System.Windows.Forms.Label firstname_text2;
         private System.Windows.Forms.Button Change_btn;
-        private System.Windows.Forms.Button gotit_btn;
         private System.Windows.Forms.Button permission_btn;
         private System.Windows.Forms.Label permission_text;
         private System.Windows.Forms.Button inftobd_btn;
