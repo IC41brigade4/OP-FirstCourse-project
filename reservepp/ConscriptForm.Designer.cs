@@ -89,7 +89,7 @@
             this.Login_title.Name = "Login_title";
             this.Login_title.Size = new System.Drawing.Size(286, 38);
             this.Login_title.TabIndex = 0;
-            this.Login_title.Text = "Conscript interface";
+            this.Login_title.Text = "Conscript";
             // 
             // get_inf_btn
             // 

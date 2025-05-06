@@ -91,20 +91,18 @@
             this.login_textbox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.login_textbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.login_textbox.Location = new System.Drawing.Point(50, 131);
-            this.login_textbox.Multiline = true;
             this.login_textbox.Name = "login_textbox";
-            this.login_textbox.Size = new System.Drawing.Size(232, 38);
+            this.login_textbox.Size = new System.Drawing.Size(232, 22);
             this.login_textbox.TabIndex = 2;
             // 
             // password_textbox
             // 
             this.password_textbox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.password_textbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.password_textbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.password_textbox.Location = new System.Drawing.Point(50, 213);
-            this.password_textbox.Multiline = true;
             this.password_textbox.Name = "password_textbox";
             this.password_textbox.PasswordChar = '*';
-            this.password_textbox.Size = new System.Drawing.Size(232, 40);
+            this.password_textbox.Size = new System.Drawing.Size(232, 24);
             this.password_textbox.TabIndex = 4;
             this.password_textbox.TextChanged += new System.EventHandler(this.password_textbox_TextChanged);
             // 
