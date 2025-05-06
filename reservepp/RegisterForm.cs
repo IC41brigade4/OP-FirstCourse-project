@@ -14,11 +14,12 @@ namespace reservepp
     {
 
         Repository<User> userRepository;
-        public RegisterForm(Repository<User> userRepository)
+        Repository<Order> orderRepository;
+        public RegisterForm(Repository<User> userRepository, Repository<Order> orderRepository)
         {
             this.userRepository = userRepository;
             InitializeComponent();
-
+            this.orderRepository = orderRepository;
         }
 
         private void label2_MouseClick(object sender, MouseEventArgs e)
@@ -44,7 +45,7 @@ namespace reservepp
 
         private void login_button_Click(object sender, EventArgs e)
         {
-            LoginForm loginForm = new LoginForm(userRepository);
+            LoginForm loginForm = new LoginForm(userRepository, orderRepository);
             loginForm.Show();
             this.Close();
         }

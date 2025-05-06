@@ -14,14 +14,16 @@ namespace reservepp
     public partial class OfficerForm: Form
     {
         Repository<User> userRepository;
+        Repository<Order> orderRepository;
         int DocId;
         int person_id;
-        public OfficerForm(Repository<User> userRepository, int docId)
+        public OfficerForm(Repository<User> userRepository, int docId, Repository<Order> orderRepository)
         {
             InitializeComponent();
             this.userRepository = userRepository;
             DocId = docId;
             person_id = DocId;
+            this.orderRepository = orderRepository;
         }
 
         private void label2_MouseClick(object sender, MouseEventArgs e)
@@ -155,7 +157,7 @@ namespace reservepp
 
         private void permission_btn_Click(object sender, EventArgs e)
         {
-            OfficerOrder officerOrder = new OfficerOrder();
+            OfficerOrder officerOrder = new OfficerOrder(orderRepository, DocId);
             officerOrder.Show(); // Відкриваємо нову форму
         }
 

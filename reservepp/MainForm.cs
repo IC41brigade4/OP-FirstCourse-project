@@ -13,9 +13,11 @@ namespace reservepp
     public partial class MainForm : Form
     {
         Repository<User> userRepository;
-        public MainForm(Repository<User> userRepository)
+        Repository<Order> orderRepository;
+        public MainForm(Repository<User> userRepository, Repository<Order> orderRepository)
         {
             this.userRepository = userRepository;
+            this.orderRepository = orderRepository;
             InitializeComponent();
 
         }
@@ -43,14 +45,14 @@ namespace reservepp
 
         private void register_button_Click(object sender, EventArgs e)
         {
-            RegisterForm registerForm = new RegisterForm(userRepository);
+            RegisterForm registerForm = new RegisterForm(userRepository, orderRepository);
             registerForm.Show();
             this.Hide();
         }
 
         private void login_button_Click(object sender, EventArgs e)
         {
-            LoginForm loginForm = new LoginForm(userRepository);
+            LoginForm loginForm = new LoginForm(userRepository, orderRepository);
             loginForm.Show();
             this.Hide();
         }
