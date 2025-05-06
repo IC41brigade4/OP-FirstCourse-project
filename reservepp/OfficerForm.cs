@@ -14,14 +14,16 @@ namespace reservepp
     public partial class OfficerForm: Form
     {
         Repository<User> userRepository;
+        Repository<Order> orderRepository;
         int DocId;
         int person_id;
-        public OfficerForm(Repository<User> userRepository, int docId)
+        public OfficerForm(Repository<User> userRepository, int docId, Repository<Order> orderRepository)
         {
             InitializeComponent();
             this.userRepository = userRepository;
             DocId = docId;
             person_id = DocId;
+            this.orderRepository = orderRepository;
         }
 
         private void label2_MouseClick(object sender, MouseEventArgs e)
@@ -47,20 +49,10 @@ namespace reservepp
 
         private void get_inf_btn_Click(object sender, EventArgs e)
         {
-            this.Inf_panel.Visible = true;
-            //this.gotit_btn.Visible = true;
-            // need to add inf to textfields
-
-            this.Inf_panel.Visible = true;
-            //this.gotit_btn.Visible = true;
-
+            
             User user = userRepository.GetById(person_id);
 
-            if (user == null)
-            {
-                MessageBox.Show("Користувач не знайдений!");
-                return;
-            }
+            
 
             // Оновлення тексту
             firstname_text.Text = $"First name: {user.FirstName}";
@@ -75,12 +67,6 @@ namespace reservepp
             age_text.Show();
             docid_text.Show();
             city_text.Show();
-        }
-
-        private void change_inf_btn_Click(object sender, EventArgs e)
-        {
-            this.Inf_panel_change.Visible = true;
-            this.Change_btn.Visible = true;
         }
 
         private void Change_btn_Click(object sender, EventArgs e)
@@ -107,21 +93,36 @@ namespace reservepp
             user.Age = age_int;
             user.City = city_textbox.Text;
 
+            firstname_text.Text = $"First name: {user.FirstName}";
+            lastname_text.Text = $"Last name: {user.LastName}";
+            age_text.Text = $"Age: {user.Age}";
+            docid_text.Text = $"DocID: {user.DocID}";
+            city_text.Text = $"City: {user.City}";
+
             userRepository.Update(user);
         }
 
-        private void gotit_btn_Click(object sender, EventArgs e)
-        {
-            this.Inf_panel.Visible = false;
-           // this.gotit_btn.Visible = false;
-        }
-
-        private void button1_Click(object sender, EventArgs e)
+        private void personal_inf_Click(object sender, EventArgs e)
         {
             person_id = DocId;
             this.enter_doc_textbox.Visible = false;
             this.enter_doc_text.Visible = false;
             this.save_doc_btn.Visible = false;
+
+            User user = userRepository.GetById(person_id);
+
+            if (user == null)
+            {
+                MessageBox.Show("Користувач не знайдений!");
+                return;
+            }
+
+            firstname_text.Text = $"First name: {user.FirstName}";
+            lastname_text.Text = $"Last name: {user.LastName}";
+            age_text.Text = $"Age: {user.Age}";
+            docid_text.Text = $"DocID: {user.DocID}";
+            city_text.Text = $"City: {user.City}";
+
         }
 
         private void Conscript_inf_Click_1(object sender, EventArgs e)
@@ -138,12 +139,27 @@ namespace reservepp
                 MessageBox.Show("Документ має номер а не незрозумілі символи");
                 return;
             }
+
+            User user = userRepository.GetById(person_id);
+
+            if (user == null)
+            {
+                MessageBox.Show("Користувач не знайдений!");
+                return;
+            }
+
+            firstname_text.Text = $"First name: {user.FirstName}";
+            lastname_text.Text = $"Last name: {user.LastName}";
+            age_text.Text = $"Age: {user.Age}";
+            docid_text.Text = $"DocID: {user.DocID}";
+            city_text.Text = $"City: {user.City}";
         }
 
         private void permission_btn_Click(object sender, EventArgs e)
         {
-            OfficerOrder officerOrder = new OfficerOrder();
+            OfficerOrder officerOrder = new OfficerOrder(orderRepository, DocId);
             officerOrder.Show(); // Відкриваємо нову форму
         }
+
     }
 }

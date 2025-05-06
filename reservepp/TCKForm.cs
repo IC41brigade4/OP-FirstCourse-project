@@ -15,12 +15,43 @@ namespace reservepp
     public partial class TCKForm: Form
     {
         Repository<User> userRepository;
+        Repository<Order> orderRepository;
         int DocId;
-        public TCKForm(Repository<User> userRepository, int docId)
+        List<Order> orders;
+        int counter = 0;
+        public TCKForm(Repository<User> userRepository, int docId, Repository<Order> orderRepository)
         {
             InitializeComponent();
             this.userRepository = userRepository;
+            this.orderRepository = orderRepository;
             DocId = docId;
+
+            User user = userRepository.GetById(DocId);
+            orders = orderRepository.GetAll();
+
+            if (user == null)
+            {
+                MessageBox.Show("Користувач не знайдений!");
+                return;
+            }
+
+            // Оновлення тексту
+            firstname_text.Text = $"First name: {user.FirstName}";
+            lastname_text.Text = $"Last name: {user.LastName}";
+            age_text.Text = $"Age: {user.Age}";
+            docid_text.Text = $"DocID: {user.DocID}";
+            city_text.Text = $"City: {user.City}";
+
+            if (orders.Count == 0)
+            {
+                Text_for_permision.Text = "Немає ніяких запитів";
+            }
+            else
+            {
+                var order1 = orders[0];
+                Text_for_permision.Text = $"Officer({order1.DocID}) mess:{order1.OrderText}, number:{order1.OrderNum}";
+            }
+            
         }
         private void label2_MouseClick(object sender, MouseEventArgs e)
         {
@@ -43,44 +74,8 @@ namespace reservepp
             lastpoint = new Point(e.X, e.Y);
         }
 
-        private void get_inf_btn_Click(object sender, EventArgs e)
-        {
-            this.Inf_panel.Visible = true;
-            this.gotit_btn.Visible = true;
-
-            User user = userRepository.GetById(DocId);
-
-            if (user == null)
-            {
-                MessageBox.Show("Користувач не знайдений!");
-                return;
-            }
-
-            // Оновлення тексту
-            firstname_text.Text = $"First name: {user.FirstName}";
-            lastname_text.Text = $"Last name: {user.LastName}";
-            age_text.Text = $"Age: {user.Age}";
-            docid_text.Text = $"DocID: {user.DocID}";
-            city_text.Text = $"City: {user.City}";
-
-            // Переконайся, що елементи відображаються
-            firstname_text.Show();
-            lastname_text.Show();
-            age_text.Show();
-            docid_text.Show();
-            city_text.Show();
-        }
-
-        private void change_inf_btn_Click(object sender, EventArgs e)
-        {
-            this.Inf_panel_change.Visible = true;
-            this.Change_btn.Visible = true;
-        }
-
         private void Change_btn_Click(object sender, EventArgs e)
         {
-            this.Inf_panel_change.Visible = true;
-            this.Change_btn.Visible = true;
 
             User user = userRepository.GetById(DocId);
 
@@ -101,18 +96,52 @@ namespace reservepp
             user.Age = age_int;
             user.City = city_textbox.Text;
 
-            userRepository.Update(user);
-        }
+            firstname_text.Text = $"First name: {user.FirstName}";
+            lastname_text.Text = $"Last name: {user.LastName}";
+            age_text.Text = $"Age: {user.Age}";
+            docid_text.Text = $"DocID: {user.DocID}";
+            city_text.Text = $"City: {user.City}";
 
-        private void gotit_btn_Click(object sender, EventArgs e)
-        {
-            this.Inf_panel.Visible = false;
-            this.gotit_btn.Visible = false;
+            userRepository.Update(user);
         }
 
         private void permission_btn_Click(object sender, EventArgs e)
         {
-           // тут треба зробити просто цикл перебору всіх значень у списку виводячи їх та додати лічильник який теж використовується для виведення та оновлювати значення в списку на погодження чи відмови
+            if (orders.Count == 0)
+            {
+
+            }
+            else if (counter < orders.Count)
+            {
+                var order = orders[counter];
+                if (radioButton1.Checked)
+                {
+                    order.Status = "Permission granted";
+                    orderRepository.Update(order);
+                    counter++;
+                    Text_for_permision.Text = $"Officer({order.DocID}) mess:{order.OrderText}, number:{order.OrderNum}";
+                }
+                else if (radioButton2.Checked)
+                {
+                    order.Status = "Permission denied";
+                    orderRepository.Update(order);
+                    counter++;
+                    Text_for_permision.Text = $"Officer({order.DocID}) mess:{order.OrderText}, number:{order.OrderNum}";
+                }
+                else
+                {
+                    MessageBox.Show("Тобі потрібно обрати надавати дозвіл чи ні!");
+                }
+            }
+            else
+            {
+                Text_for_permision.Text = "Більше запитів немає";
+            }
+        }
+
+        private void save_btn_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

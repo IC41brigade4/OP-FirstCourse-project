@@ -13,9 +13,11 @@ namespace reservepp
     public partial class LoginForm: Form
     {
         Repository<User> userRepository;
-        public LoginForm(Repository<User> userRepository)
+        Repository<Order> orderRepository;
+        public LoginForm(Repository<User> userRepository, Repository<Order> orderRepository)
         {
             this.userRepository = userRepository;
+            this.orderRepository = orderRepository;
             InitializeComponent();
             
             
@@ -71,13 +73,13 @@ namespace reservepp
                 }
                 else if (user is Officer)
                 {
-                    OfficerForm officerForm = new OfficerForm(userRepository, docID);
+                    OfficerForm officerForm = new OfficerForm(userRepository, docID, orderRepository);
                     officerForm.Show(); // Відкриваємо нову форму
                     this.Close();
                 }
                 else if(user is TCKEmployee)
                 {
-                    TCKForm tckForm = new TCKForm(userRepository, docID);
+                    TCKForm tckForm = new TCKForm(userRepository, docID, orderRepository);
                     tckForm.Show(); // Відкриваємо нову форму
                     this.Close();
                 }
@@ -91,7 +93,7 @@ namespace reservepp
 
         private void register_button_Click(object sender, EventArgs e)
         {
-            RegisterForm registerForm = new RegisterForm(userRepository);
+            RegisterForm registerForm = new RegisterForm(userRepository, orderRepository);
             registerForm.Show();
             this.Close();
         }

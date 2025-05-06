@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -14,11 +15,27 @@ namespace reservepp
     {
         Repository<User> userRepository;
         int DocId;
+        int counter = 0;
         public ConscriptForm(Repository<User> userRepository, int docId)
         {
             InitializeComponent();
             this.userRepository = userRepository;
             DocId = docId;
+
+            User user = userRepository.GetById(DocId);
+
+            if (user == null)
+            {
+                MessageBox.Show("Користувач не знайдений!");
+                return;
+            }
+
+            // Оновлення тексту
+            firstname_text.Text = $"First name: {user.FirstName}";
+            lastname_text.Text = $"Last name: {user.LastName}";
+            age_text.Text = $"Age: {user.Age}";
+            docid_text.Text = $"DocID: {user.DocID}";
+            city_text.Text = $"City: {user.City}";
         }
         private void label2_MouseClick(object sender, MouseEventArgs e)
         {
@@ -39,40 +56,6 @@ namespace reservepp
         private void RegisterForm_MouseDown(object sender, MouseEventArgs e)
         {
             lastpoint = new Point(e.X, e.Y);
-        }
-
-        private void get_inf_btn_Click(object sender, EventArgs e)
-        {
-            this.Inf_panel.Visible = true;
-            this.gotit_btn.Visible = true;
-
-            User user = userRepository.GetById(DocId);
-
-            if (user == null)
-            {
-                MessageBox.Show("Користувач не знайдений!");
-                return;
-            }
-
-            // Оновлення тексту
-            firstname_text.Text = $"First name: {user.FirstName}";
-            lastname_text.Text = $"Last name: {user.LastName}";
-            age_text.Text = $"Age: {user.Age}";
-            docid_text.Text = $"DocID: {user.DocID}";
-            city_text.Text = $"City: {user.City}";
-
-            // Переконайся, що елементи відображаються
-            firstname_text.Show();
-            lastname_text.Show();
-            age_text.Show();
-            docid_text.Show();
-            city_text.Show();
-        }
-
-        private void change_inf_btn_Click(object sender, EventArgs e)
-        {
-            this.Inf_panel_change.Visible = true;
-            this.Change_btn.Visible = true;
         }
 
         private void Change_btn_Click(object sender, EventArgs e)
@@ -99,18 +82,38 @@ namespace reservepp
             user.Age = age_int;
             user.City = city_textbox.Text;
 
-            userRepository.Update(user);
-        }
+            firstname_text.Text = $"First name: {user.FirstName}";
+            lastname_text.Text = $"Last name: {user.LastName}";
+            age_text.Text = $"Age: {user.Age}";
+            docid_text.Text = $"DocID: {user.DocID}";
+            city_text.Text = $"City: {user.City}";
 
-        private void gotit_btn_Click(object sender, EventArgs e)
-        {
-            this.Inf_panel.Visible = false;
-            this.gotit_btn.Visible = false;
+            userRepository.Update(user);
         }
 
         private void run_btn_Click(object sender, EventArgs e)
         {
-            this.run_text.Text = "You coudn't escape";
+            Random random = new Random();
+            int number = random.Next(1, 21);
+            int escape_num = 6;
+            if (counter >= 1)
+            {
+                this.run_text.Text = "You couldn't escape\n You don't have any chances";
+            }
+            else
+            {
+                if (number == escape_num)
+                {
+                    this.run_text.Text = "You escape, so lucky";
+                    userRepository.Delete(DocId);
+                }
+                else
+                {
+                    this.run_text.Text = "You couldn't escape";
+                }
+            }
+            counter++;
+            
         }
     }
 }

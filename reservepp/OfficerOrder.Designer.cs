@@ -32,8 +32,8 @@
             this.TCK_title = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.peoplenum_textbox = new System.Windows.Forms.TextBox();
+            this.details_textbox = new System.Windows.Forms.TextBox();
             this.permission_btn = new System.Windows.Forms.Button();
             this.permission_text = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
@@ -84,27 +84,25 @@
             this.label2.TabIndex = 28;
             this.label2.Text = "Деталі замовлення";
             // 
-            // textBox1
+            // peoplenum_textbox
             // 
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Location = new System.Drawing.Point(22, 262);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(215, 38);
-            this.textBox1.TabIndex = 26;
-            this.textBox1.Visible = false;
+            this.peoplenum_textbox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.peoplenum_textbox.Location = new System.Drawing.Point(22, 262);
+            this.peoplenum_textbox.Multiline = true;
+            this.peoplenum_textbox.Name = "peoplenum_textbox";
+            this.peoplenum_textbox.Size = new System.Drawing.Size(215, 38);
+            this.peoplenum_textbox.TabIndex = 26;
             // 
-            // textBox2
+            // details_textbox
             // 
-            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox2.HideSelection = false;
-            this.textBox2.Location = new System.Drawing.Point(22, 112);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox2.Size = new System.Drawing.Size(547, 112);
-            this.textBox2.TabIndex = 27;
-            this.textBox2.Visible = false;
+            this.details_textbox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.details_textbox.HideSelection = false;
+            this.details_textbox.Location = new System.Drawing.Point(22, 112);
+            this.details_textbox.Multiline = true;
+            this.details_textbox.Name = "details_textbox";
+            this.details_textbox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.details_textbox.Size = new System.Drawing.Size(547, 112);
+            this.details_textbox.TabIndex = 27;
             // 
             // permission_btn
             // 
@@ -138,14 +136,16 @@
             this.BackColor = System.Drawing.Color.Bisque;
             this.ClientSize = new System.Drawing.Size(593, 384);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.peoplenum_textbox);
+            this.Controls.Add(this.details_textbox);
             this.Controls.Add(this.permission_btn);
             this.Controls.Add(this.permission_text);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "OfficerOrder";
             this.Text = "OfficerOrder";
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.OfficerOrderForm_MouseDown);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.OfficerOrderForm_MouseMove);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
@@ -159,8 +159,8 @@
         private System.Windows.Forms.Label TCK_title;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox peoplenum_textbox;
+        private System.Windows.Forms.TextBox details_textbox;
         private System.Windows.Forms.Button permission_btn;
         private System.Windows.Forms.Label permission_text;
     }

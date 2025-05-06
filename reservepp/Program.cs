@@ -24,11 +24,16 @@ namespace reservepp
         static void Main()                 
         {                                  
             string filePath = "users.json";
+            string filePath_orders = "orders.json";
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             IDataStorage<User> dataStorage = new JsonStorage<User>(filePath);
             Repository<User> userRepository = new Repository<User>(dataStorage);
             var userService = new UserService(userRepository);
+
+            IDataStorage<Order> orderStorage = new JsonOrderStorage<Order>(filePath_orders);
+            Repository<Order> orderRepository = new Repository<Order>(orderStorage);
+            var orderService = new OrderService(orderRepository);
 
             //User officer1 = new Officer("Михайло", "Драган", 24, 12345, "Придатний", false, "Кривий Ріг", "asd1");
             //User conscript1 = new Conscript("Максим", "Пловоїдік", 19, 122345, "Частково придатний", false, "Рівний Ріг", "asd2");
@@ -37,7 +42,7 @@ namespace reservepp
             //userService.AddUser(conscript1);
             //userService.AddUser(tckEmployee1);
 
-            Application.Run(new MainForm(userRepository));
+            Application.Run(new MainForm(userRepository, orderRepository));
             Application.Exit();
         }
     }

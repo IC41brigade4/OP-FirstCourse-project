@@ -118,9 +118,8 @@
             this.get_inf_btn.Name = "get_inf_btn";
             this.get_inf_btn.Size = new System.Drawing.Size(277, 38);
             this.get_inf_btn.TabIndex = 7;
-            this.get_inf_btn.Text = "Get all information";
+            this.get_inf_btn.Text = "All information";
             this.get_inf_btn.UseVisualStyleBackColor = false;
-            this.get_inf_btn.Click += new System.EventHandler(this.get_inf_btn_Click);
             // 
             // firstname_text
             // 
@@ -189,7 +188,6 @@
             this.Inf_panel.Name = "Inf_panel";
             this.Inf_panel.Size = new System.Drawing.Size(277, 174);
             this.Inf_panel.TabIndex = 8;
-            this.Inf_panel.Visible = false;
             // 
             // change_inf_btn
             // 
@@ -203,7 +201,6 @@
             this.change_inf_btn.TabIndex = 10;
             this.change_inf_btn.Text = "Changing information";
             this.change_inf_btn.UseVisualStyleBackColor = false;
-            this.change_inf_btn.Click += new System.EventHandler(this.change_inf_btn_Click);
             // 
             // firstname_text2
             // 
@@ -300,7 +297,6 @@
             this.Inf_panel_change.Name = "Inf_panel_change";
             this.Inf_panel_change.Size = new System.Drawing.Size(306, 174);
             this.Inf_panel_change.TabIndex = 11;
-            this.Inf_panel_change.Visible = false;
             // 
             // Change_btn
             // 
@@ -314,7 +310,6 @@
             this.Change_btn.TabIndex = 12;
             this.Change_btn.Text = "Change";
             this.Change_btn.UseVisualStyleBackColor = false;
-            this.Change_btn.Visible = false;
             this.Change_btn.Click += new System.EventHandler(this.Change_btn_Click);
             // 
             // personal_inf
@@ -329,7 +324,7 @@
             this.personal_inf.TabIndex = 17;
             this.personal_inf.Text = "Personal";
             this.personal_inf.UseVisualStyleBackColor = false;
-            this.personal_inf.Click += new System.EventHandler(this.button1_Click);
+            this.personal_inf.Click += new System.EventHandler(this.personal_inf_Click);
             // 
             // Conscript_inf
             // 
