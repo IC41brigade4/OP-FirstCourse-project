@@ -15,7 +15,12 @@ namespace reservepp
 			return _repository.GetAll();
 		}
 
-		public void AddUser(User user)
+        public User GetById(int id)
+        {
+            return _repository.GetById(id);
+        }
+
+        public void AddUser(User user)
 		{
 			_repository.Add(user);
 			

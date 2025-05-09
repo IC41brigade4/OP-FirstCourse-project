@@ -2,30 +2,20 @@ namespace reservepp
 {
     class TCKEmployee : User, ITCKEmployee
     {
+        private readonly UserService userService;
         public TCKEmployee(string firstName, string lastName, int age, int docID, string medicalExaminationResult,
-                bool HasDeferment, string city, string password)
+                bool HasDeferment, string city, string password, string armyUnit, UserService userService)
             : base(firstName, lastName, age, docID, medicalExaminationResult,
-                HasDeferment, city, password)
-        { }
-
-        public void CheckSoldier(int docID)
+                HasDeferment, city, password, armyUnit, userService)
         {
-
+           
         }
 
-        public override void displayInfo()
+        public void agreeOffer(int docID)
         {
-
+            // Сюди прописати той функціонал, що має виконуватись у формі тцк по кнопці
         }
 
-        public void issue_permits(int docID)
-        {
-
-        }
-
-        public void provide_information(string firstName, string lastName, int age, int docID, string medicalExaminationResult, bool hasDeferment, string city)
-        {
-
-        }
+        
     }
 }

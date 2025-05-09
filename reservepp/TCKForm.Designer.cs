@@ -53,12 +53,10 @@
             this.Change_btn = new System.Windows.Forms.Button();
             this.permission_btn = new System.Windows.Forms.Button();
             this.permission_text = new System.Windows.Forms.Label();
-            this.inftobd_btn = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.Text_for_permision = new System.Windows.Forms.Label();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.save_btn = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.Inf_panel.SuspendLayout();
             this.Inf_panel_change.SuspendLayout();
@@ -233,6 +231,7 @@
             // 
             // city_textbox
             // 
+            this.city_textbox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.city_textbox.Location = new System.Drawing.Point(112, 107);
             this.city_textbox.Multiline = true;
             this.city_textbox.Name = "city_textbox";
@@ -241,6 +240,7 @@
             // 
             // age_textbox
             // 
+            this.age_textbox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.age_textbox.Location = new System.Drawing.Point(112, 76);
             this.age_textbox.Multiline = true;
             this.age_textbox.Name = "age_textbox";
@@ -249,6 +249,7 @@
             // 
             // lastname_textbox
             // 
+            this.lastname_textbox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.lastname_textbox.Location = new System.Drawing.Point(112, 47);
             this.lastname_textbox.Multiline = true;
             this.lastname_textbox.Name = "lastname_textbox";
@@ -257,6 +258,7 @@
             // 
             // firstname_textbox
             // 
+            this.firstname_textbox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.firstname_textbox.Location = new System.Drawing.Point(112, 16);
             this.firstname_textbox.Multiline = true;
             this.firstname_textbox.Name = "firstname_textbox";
@@ -327,9 +329,9 @@
             this.permission_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.permission_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.permission_btn.ForeColor = System.Drawing.Color.Bisque;
-            this.permission_btn.Location = new System.Drawing.Point(249, 486);
+            this.permission_btn.Location = new System.Drawing.Point(187, 597);
             this.permission_btn.Name = "permission_btn";
-            this.permission_btn.Size = new System.Drawing.Size(338, 38);
+            this.permission_btn.Size = new System.Drawing.Size(169, 38);
             this.permission_btn.TabIndex = 15;
             this.permission_btn.Text = "Send permission";
             this.permission_btn.UseVisualStyleBackColor = false;
@@ -346,42 +348,29 @@
             this.permission_text.TabIndex = 14;
             this.permission_text.Text = "Send permission to replenish the brigade";
             // 
-            // inftobd_btn
-            // 
-            this.inftobd_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.inftobd_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.inftobd_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.inftobd_btn.ForeColor = System.Drawing.Color.Bisque;
-            this.inftobd_btn.Location = new System.Drawing.Point(17, 486);
-            this.inftobd_btn.Name = "inftobd_btn";
-            this.inftobd_btn.Size = new System.Drawing.Size(214, 38);
-            this.inftobd_btn.TabIndex = 16;
-            this.inftobd_btn.Text = "Send information to BD";
-            this.inftobd_btn.UseVisualStyleBackColor = false;
-            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.BurlyWood;
             this.panel2.Controls.Add(this.Text_for_permision);
-            this.panel2.Location = new System.Drawing.Point(249, 530);
+            this.panel2.Location = new System.Drawing.Point(18, 481);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(338, 106);
+            this.panel2.Size = new System.Drawing.Size(643, 106);
             this.panel2.TabIndex = 9;
             // 
             // Text_for_permision
             // 
             this.Text_for_permision.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Text_for_permision.ForeColor = System.Drawing.Color.SaddleBrown;
-            this.Text_for_permision.Location = new System.Drawing.Point(12, 12);
+            this.Text_for_permision.Location = new System.Drawing.Point(16, 12);
             this.Text_for_permision.Name = "Text_for_permision";
-            this.Text_for_permision.Size = new System.Drawing.Size(309, 76);
+            this.Text_for_permision.Size = new System.Drawing.Size(607, 76);
             this.Text_for_permision.TabIndex = 5;
             // 
             // radioButton1
             // 
             this.radioButton1.AutoSize = true;
             this.radioButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.radioButton1.Location = new System.Drawing.Point(265, 653);
+            this.radioButton1.Location = new System.Drawing.Point(34, 604);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(64, 22);
             this.radioButton1.TabIndex = 17;
@@ -393,7 +382,7 @@
             // 
             this.radioButton2.AutoSize = true;
             this.radioButton2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.radioButton2.Location = new System.Drawing.Point(355, 653);
+            this.radioButton2.Location = new System.Drawing.Point(104, 605);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(77, 22);
             this.radioButton2.TabIndex = 18;
@@ -401,31 +390,15 @@
             this.radioButton2.Text = "Disgree";
             this.radioButton2.UseVisualStyleBackColor = true;
             // 
-            // save_btn
-            // 
-            this.save_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.save_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.save_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.save_btn.ForeColor = System.Drawing.Color.Bisque;
-            this.save_btn.Location = new System.Drawing.Point(451, 647);
-            this.save_btn.Name = "save_btn";
-            this.save_btn.Size = new System.Drawing.Size(136, 35);
-            this.save_btn.TabIndex = 19;
-            this.save_btn.Text = "Save";
-            this.save_btn.UseVisualStyleBackColor = false;
-            this.save_btn.Click += new System.EventHandler(this.save_btn_Click);
-            // 
             // TCKForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Bisque;
-            this.ClientSize = new System.Drawing.Size(700, 694);
-            this.Controls.Add(this.save_btn);
+            this.ClientSize = new System.Drawing.Size(700, 651);
             this.Controls.Add(this.radioButton2);
             this.Controls.Add(this.radioButton1);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.inftobd_btn);
             this.Controls.Add(this.permission_btn);
             this.Controls.Add(this.permission_text);
             this.Controls.Add(this.Change_btn);
@@ -480,12 +453,10 @@
         private System.Windows.Forms.Button Change_btn;
         private System.Windows.Forms.Button permission_btn;
         private System.Windows.Forms.Label permission_text;
-        private System.Windows.Forms.Button inftobd_btn;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label Text_for_permision;
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.Button save_btn;
     }
 }
 

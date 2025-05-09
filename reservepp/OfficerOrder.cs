@@ -14,11 +14,13 @@ namespace reservepp
     public partial class OfficerOrder: Form
     {
         Repository<Order> orderRepository;
+        UserService userService;
         int DocId;
-        public OfficerOrder(Repository<Order> orderRepository, int DocId)
+        public OfficerOrder(Repository<Order> orderRepository, int DocId, UserService userService)
         {
             this.orderRepository = orderRepository;
             this.DocId = DocId;
+            this.userService = userService;
             InitializeComponent();
         }
         private void OfficerOrderForm_MouseMove(object sender, MouseEventArgs e)
@@ -39,18 +41,7 @@ namespace reservepp
 
         private void permission_btn_Click(object sender, EventArgs e)
         {
-            string orderText = details_textbox.Text;
-            string peoplenum_text = peoplenum_textbox.Text;
-            if (!int.TryParse(peoplenum_text, out int orderNum))
-            {
-                MessageBox.Show("Кількість людей має бути числом!");
-                return;
-            }
-
-            Order order = new Order(DocId, orderNum, orderText, "Не переглянуто");
-            orderRepository.Add(order);
-
-            MessageBox.Show("Ваша заявка надіслана! \nОчікуйте її розгляду найближчим часом", "Заявка на поповнення", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            ((Officer)userService.GetById(DocId)).makeOffer(details_textbox.Text, peoplenum_textbox.Text, DocId);
             this.Hide();
         }
     }

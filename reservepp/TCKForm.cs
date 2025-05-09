@@ -36,11 +36,11 @@ namespace reservepp
             }
 
             // Оновлення тексту
-            firstname_text.Text = $"First name: {user.FirstName}";
-            lastname_text.Text = $"Last name: {user.LastName}";
-            age_text.Text = $"Age: {user.Age}";
-            docid_text.Text = $"DocID: {user.DocID}";
-            city_text.Text = $"City: {user.City}";
+            firstname_text.Text = $"Ім'я: {user.FirstName}";
+            lastname_text.Text = $"Прізвище: {user.LastName}";
+            age_text.Text = $"Вік: {user.Age}";
+            docid_text.Text = $"Номер документа: {user.DocID}";
+            city_text.Text = $"Місто прописки: {user.City}";
 
             if (orders.Count == 0)
             {

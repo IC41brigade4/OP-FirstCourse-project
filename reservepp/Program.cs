@@ -20,7 +20,7 @@ namespace reservepp
             bool isCorrect = BCrypt.Net.BCrypt.Verify(enteredPassword, hashedPassword);
             return isCorrect;
         }
-                                           
+        
         static void Main()                 
         {                                  
             string filePath = "users.json";
@@ -30,7 +30,7 @@ namespace reservepp
             IDataStorage<User> dataStorage = new JsonStorage<User>(filePath);
             Repository<User> userRepository = new Repository<User>(dataStorage);
             var userService = new UserService(userRepository);
-
+       
             IDataStorage<Order> orderStorage = new JsonOrderStorage<Order>(filePath_orders);
             Repository<Order> orderRepository = new Repository<Order>(orderStorage);
             var orderService = new OrderService(orderRepository);

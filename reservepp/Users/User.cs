@@ -7,8 +7,11 @@ namespace reservepp
         private string firstName, lastName, medicalExaminationResult, city;
         private bool hasDeferment;
         private string hashedPassword = "";
-
-        public User(string firstName, string lastName, int age, int docID, string medicalExaminationResult, bool hasDeferment, string city, string password)
+        private string armyUnit;
+        private UserService userService;
+        private OrderService orderService;
+        public User(string firstName, string lastName, int age, int docID, string medicalExaminationResult, 
+            bool hasDeferment, string city, string password, string armyUnit, UserService userService, OrderService orderService)
         {
             this.firstName = firstName;
             this.lastName = lastName;
@@ -17,8 +20,11 @@ namespace reservepp
             this.medicalExaminationResult = medicalExaminationResult;
             this.hasDeferment = hasDeferment;
             this.city = city;
-            if(password != null)
+            this.armyUnit = armyUnit;
+            this.userService = userService;
+            if (password != null)
                 this.hashedPassword = BCrypt.Net.BCrypt.HashPassword(password);
+            this.orderService = orderService;
         }
 
         public int Age { get => age; set => age = value; }
@@ -28,10 +34,13 @@ namespace reservepp
         public string MedicalExaminationResult { get => medicalExaminationResult; set => medicalExaminationResult = value; }
         public bool HasDeferment { get => hasDeferment; set => hasDeferment = value; }
         public string City { get => city; set => city = value; }
+        public string ArmyUnit { get => armyUnit; set => armyUnit = value; }
         public string HashedPassword { get => hashedPassword; set => hashedPassword = value; }
+        public UserService UserService { get => userService; set => userService = value; }
+        public OrderService OrderService { get => orderService; set => orderService = value; }
         public string Name => $"{firstName} {lastName}";
-        public abstract void displayInfo();
-        public void SetData(string firstName, string lastName, int age, int docID, string medicalExaminationResult, bool hasDeferment, string city)
+        public void SetData(string firstName, string lastName, int age, int docID, string medicalExaminationResult,
+            bool hasDeferment, string city, string armyUnit)
         {
             this.firstName = firstName;
             this.lastName = lastName;
@@ -40,10 +49,15 @@ namespace reservepp
             this.medicalExaminationResult = medicalExaminationResult;
             this.hasDeferment = hasDeferment;
             this.city = city;
+            this.armyUnit = armyUnit;
+                        
         }
+
+
         public string GetData()
         {
-            return $"Ім'я: {FirstName} {LastName}, Вік: {Age}, ID: {DocID}, Медогляд: {MedicalExaminationResult}, Відсрочка: {HasDeferment}, Місто: {City}";
+            return $"Ім'я: {FirstName} {LastName}, Вік: {Age}, ID: {DocID}, Медогляд: {MedicalExaminationResult}," +
+                $" Відсрочка: {HasDeferment}, Місто: {City}, Cлужбова частина: {armyUnit}";
         }
 
     }

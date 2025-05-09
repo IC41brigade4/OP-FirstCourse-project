@@ -204,6 +204,7 @@
             // 
             // city_textbox
             // 
+            this.city_textbox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.city_textbox.Location = new System.Drawing.Point(112, 107);
             this.city_textbox.Multiline = true;
             this.city_textbox.Name = "city_textbox";
@@ -212,6 +213,7 @@
             // 
             // age_textbox
             // 
+            this.age_textbox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.age_textbox.Location = new System.Drawing.Point(112, 76);
             this.age_textbox.Multiline = true;
             this.age_textbox.Name = "age_textbox";
@@ -220,6 +222,7 @@
             // 
             // lastname_textbox
             // 
+            this.lastname_textbox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.lastname_textbox.Location = new System.Drawing.Point(112, 47);
             this.lastname_textbox.Multiline = true;
             this.lastname_textbox.Name = "lastname_textbox";
@@ -228,6 +231,7 @@
             // 
             // firstname_textbox
             // 
+            this.firstname_textbox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.firstname_textbox.Location = new System.Drawing.Point(112, 16);
             this.firstname_textbox.Multiline = true;
             this.firstname_textbox.Name = "firstname_textbox";
