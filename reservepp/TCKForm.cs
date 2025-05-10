@@ -16,10 +16,11 @@ namespace reservepp
     {
         Repository<User> userRepository;
         Repository<Order> orderRepository;
+        UserService userService;
         int DocId;
         List<Order> orders;
         int counter = 0;
-        public TCKForm(Repository<User> userRepository, int docId, Repository<Order> orderRepository)
+        public TCKForm(Repository<User> userRepository, int docId, Repository<Order> orderRepository, UserService userService)
         {
             InitializeComponent();
             this.userRepository = userRepository;
@@ -110,6 +111,7 @@ namespace reservepp
             bool? isPermissionGranted = radioButton1.Checked ? true :
                                  radioButton2.Checked ? false : (bool?)null;
             var order = orders[0];
+
             string result = ((TCKEmployee)userRepository.GetById(order.DocID)).AgreeOffer(isPermissionGranted);
             Text_for_permision.Text = result;
 

@@ -44,5 +44,10 @@ namespace reservepp
             ((Officer)userService.GetById(DocId)).makeOffer(details_textbox.Text, peoplenum_textbox.Text, DocId);
             this.Hide();
         }
+
+        private void button_exit_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+        }
     }
 }

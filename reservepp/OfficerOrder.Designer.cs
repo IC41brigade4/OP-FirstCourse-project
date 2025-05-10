@@ -50,6 +50,7 @@
             this.button_exit.Size = new System.Drawing.Size(26, 25);
             this.button_exit.TabIndex = 1;
             this.button_exit.Text = "X";
+            this.button_exit.Click += new System.EventHandler(this.button_exit_Click);
             // 
             // TCK_title
             // 
