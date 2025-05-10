@@ -107,35 +107,15 @@ namespace reservepp
 
         private void permission_btn_Click(object sender, EventArgs e)
         {
-            if (orders.Count == 0)
-            {
+            bool? isPermissionGranted = radioButton1.Checked ? true :
+                                 radioButton2.Checked ? false : (bool?)null;
+            var order = orders[0];
+            string result = ((TCKEmployee)userRepository.GetById(order.DocID)).AgreeOffer(isPermissionGranted);
+            Text_for_permision.Text = result;
 
-            }
-            else if (counter < orders.Count)
+            if (result == "Тобі потрібно обрати надавати дозвіл чи ні!")
             {
-                var order = orders[counter];
-                if (radioButton1.Checked)
-                {
-                    order.Status = "Permission granted";
-                    orderRepository.Update(order);
-                    counter++;
-                    Text_for_permision.Text = $"Officer({order.DocID}) mess:{order.OrderText}, number:{order.OrderNum}";
-                }
-                else if (radioButton2.Checked)
-                {
-                    order.Status = "Permission denied";
-                    orderRepository.Update(order);
-                    counter++;
-                    Text_for_permision.Text = $"Officer({order.DocID}) mess:{order.OrderText}, number:{order.OrderNum}";
-                }
-                else
-                {
-                    MessageBox.Show("Тобі потрібно обрати надавати дозвіл чи ні!");
-                }
-            }
-            else
-            {
-                Text_for_permision.Text = "Більше запитів немає";
+                MessageBox.Show(result);
             }
         }
 

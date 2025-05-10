@@ -14,12 +14,15 @@ namespace reservepp
     {
         Repository<User> userRepository;
         Repository<Order> orderRepository;
-        public LoginForm(Repository<User> userRepository, Repository<Order> orderRepository)
+        UserService userService;
+        OrderService orderService;
+        public LoginForm(Repository<User> userRepository, Repository<Order> orderRepository, OrderService orderService, UserService userService)
         {
             this.userRepository = userRepository;
             this.orderRepository = orderRepository;
+            this.orderService = orderService;
+            this.userService = userService;
             InitializeComponent();
-            
             
         }
 
@@ -73,7 +76,7 @@ namespace reservepp
                 }
                 else if (user is Officer)
                 {
-                    OfficerForm officerForm = new OfficerForm(userRepository, docID, orderRepository);
+                    OfficerForm officerForm = new OfficerForm(userRepository, docID, orderRepository, userService);
                     officerForm.Show(); // Відкриваємо нову форму
                     this.Close();
                 }
@@ -93,7 +96,7 @@ namespace reservepp
 
         private void register_button_Click(object sender, EventArgs e)
         {
-            RegisterForm registerForm = new RegisterForm(userRepository, orderRepository);
+            RegisterForm registerForm = new RegisterForm(userRepository, orderRepository, userService, orderService );
             registerForm.Show();
             this.Close();
         }

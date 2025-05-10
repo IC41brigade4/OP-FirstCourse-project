@@ -42,7 +42,7 @@ namespace reservepp
             //userService.AddUser(conscript1);
             //userService.AddUser(tckEmployee1);
 
-            Application.Run(new MainForm(userRepository, orderRepository));
+            Application.Run(new MainForm(userRepository, orderRepository, userService, orderService));
             Application.Exit();
         }
     }

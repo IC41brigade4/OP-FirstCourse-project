@@ -15,11 +15,17 @@ namespace reservepp
 
         Repository<User> userRepository;
         Repository<Order> orderRepository;
-        public RegisterForm(Repository<User> userRepository, Repository<Order> orderRepository)
+        UserService userService;
+        List<Order> orders;
+        OrderService orderService;
+        public RegisterForm(Repository<User> userRepository, Repository<Order> orderRepository, UserService userService, OrderService orderService)
         {
             this.userRepository = userRepository;
-            InitializeComponent();
+            this.userService = userService;
             this.orderRepository = orderRepository;
+            this.orderService = orderService;
+            InitializeComponent();
+            
         }
 
         private void label2_MouseClick(object sender, MouseEventArgs e)
@@ -45,7 +51,7 @@ namespace reservepp
 
         private void login_button_Click(object sender, EventArgs e)
         {
-            LoginForm loginForm = new LoginForm(userRepository, orderRepository);
+            LoginForm loginForm = new LoginForm(userRepository, orderRepository, orderService, userService);
             loginForm.Show();
             this.Close();
         }
@@ -63,15 +69,15 @@ namespace reservepp
                 MessageBox.Show("Логін має бути числом!");
                 return;
             }
-            User user = new Conscript("Name", "Secondname", 20, docID, "Годен", false, "City", password);
+            User user = new Conscript("Name", "Secondname", 20, docID, "Годен", false, "City", password, "None", userService, orders, orderService);
 
             if (employee_key == officer_key)
             {
-                user = new Officer("Name", "Secondname", 20, docID, "Годен", false, "City", password);   
+                user = new Officer("Name", "Secondname", 20, docID, "Годен", false, "City", password, "None", userService, orders, orderService);   
             } 
             else if (employee_key == tck_key)
             {
-                user = new TCKEmployee("Name", "Secondname", 20, docID, "Годен", false, "City", password);
+                user = new TCKEmployee("Name", "Secondname", 20, docID, "Годен", false, "City", password, "None", userService, orders, orderService);
             }
 
             if (employee_key != "" && employee_key != officer_key && employee_key != tck_key)

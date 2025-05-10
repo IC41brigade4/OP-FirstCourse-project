@@ -1,4 +1,5 @@
 using BCrypt.Net;
+using System.Collections.Generic;
 namespace reservepp
 {
     public abstract class User
@@ -10,8 +11,9 @@ namespace reservepp
         private string armyUnit;
         private UserService userService;
         private OrderService orderService;
+        private List<Order> orders;
         public User(string firstName, string lastName, int age, int docID, string medicalExaminationResult, 
-            bool hasDeferment, string city, string password, string armyUnit, UserService userService, OrderService orderService)
+            bool hasDeferment, string city, string password, string armyUnit, UserService userService, OrderService orderService, List<Order> orders)
         {
             this.firstName = firstName;
             this.lastName = lastName;
@@ -25,6 +27,7 @@ namespace reservepp
             if (password != null)
                 this.hashedPassword = BCrypt.Net.BCrypt.HashPassword(password);
             this.orderService = orderService;
+            this.orders = orders;
         }
 
         public int Age { get => age; set => age = value; }
