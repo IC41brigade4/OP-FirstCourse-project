@@ -82,7 +82,7 @@ namespace reservepp
                 }
                 else if(user is TCKEmployee)
                 {
-                    TCKForm tckForm = new TCKForm(userRepository, docID, orderRepository, userService);
+                    TCKForm tckForm = new TCKForm(userRepository, docID, orderRepository, userService, orderService);
                     tckForm.Show(); // Відкриваємо нову форму
                     this.Close();
                 }

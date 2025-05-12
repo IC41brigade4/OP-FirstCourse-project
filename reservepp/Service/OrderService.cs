@@ -15,7 +15,7 @@ namespace reservepp
             _repository = repository;
         }
 
-        public IEnumerable<Order> GetAllUsers()
+        public IEnumerable<Order> GetAllOrders()
         {
             return _repository.GetAll();
         }

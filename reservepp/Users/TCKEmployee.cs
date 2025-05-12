@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace reservepp
@@ -6,35 +7,33 @@ namespace reservepp
     class TCKEmployee : User, ITCKEmployee
     {
         private readonly UserService userService;
-        private List<Order> orders;
         private OrderService orderService;
         private int counter;
 
         public TCKEmployee(string firstName, string lastName, int age, int docID, string medicalExaminationResult,
                 bool HasDeferment, string city, string password, string armyUnit, UserService userService,
-                List<Order> orders, OrderService orderService)
+                OrderService orderService)
             : base(firstName, lastName, age, docID, medicalExaminationResult,
-                HasDeferment, city, password, armyUnit, userService, orderService, orders)
+                HasDeferment, city, password, armyUnit, userService, orderService)
         {
             this.userService = userService;
-            this.orders = orders;
             this.orderService = orderService;
             this.counter = 0;
         }
 
         public string AgreeOffer(bool? isPermissionGranted)
         {
-            if (orders.Count == 0)
+            if (orderService.GetAllOrders().Count() == 0)
             {
                 return "Список запитів порожній.";
             }
 
-            if (counter >= orders.Count)
+            if (counter >= orderService.GetAllOrders().Count())
             {
                 return "Більше запитів немає";
             }
 
-            var order = orders[counter];
+            var order = orderService.GetAllOrders().ToList()[counter];
 
             if (isPermissionGranted == true)
             {

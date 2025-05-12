@@ -69,15 +69,15 @@ namespace reservepp
                 MessageBox.Show("Логін має бути числом!");
                 return;
             }
-            User user = new Conscript("Name", "Secondname", 20, docID, "Годен", false, "City", password, "None", userService, orders, orderService);
+            User user = new Conscript("Name", "Secondname", 20, docID, "Годен", false, "City", password, "None", userService, orderService);
 
             if (employee_key == officer_key)
             {
-                user = new Officer("Name", "Secondname", 20, docID, "Годен", false, "City", password, "None", userService, orders, orderService);   
+                user = new Officer("Name", "Secondname", 20, docID, "Годен", false, "City", password, "None", userService, orderService);   
             } 
             else if (employee_key == tck_key)
             {
-                user = new TCKEmployee("Name", "Secondname", 20, docID, "Годен", false, "City", password, "None", userService, orders, orderService);
+                user = new TCKEmployee("Name", "Secondname", 20, docID, "Годен", false, "City", password, "None", userService, orderService);
             }
 
             if (employee_key != "" && employee_key != officer_key && employee_key != tck_key)

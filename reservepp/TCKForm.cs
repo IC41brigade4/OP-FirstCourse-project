@@ -17,14 +17,18 @@ namespace reservepp
         Repository<User> userRepository;
         Repository<Order> orderRepository;
         UserService userService;
+        OrderService orderService;
         int DocId;
         List<Order> orders;
         int counter = 0;
-        public TCKForm(Repository<User> userRepository, int docId, Repository<Order> orderRepository, UserService userService)
+        public TCKForm(Repository<User> userRepository, int docId, Repository<Order> orderRepository, UserService userService, OrderService orderService)
         {
             InitializeComponent();
             this.userRepository = userRepository;
             this.orderRepository = orderRepository;
+            this.userService = userService;
+            this.orderService = orderService;
+            this.
             DocId = docId;
 
             User user = userRepository.GetById(DocId);
@@ -78,7 +82,7 @@ namespace reservepp
         private void Change_btn_Click(object sender, EventArgs e)
         {
 
-            User user = userRepository.GetById(DocId);
+            User user = userService.GetById(DocId);
 
             if (user == null)
             {
@@ -103,7 +107,7 @@ namespace reservepp
             docid_text.Text = $"DocID: {user.DocID}";
             city_text.Text = $"City: {user.City}";
 
-            userRepository.Update(user);
+            userService.UpdateUser(user);
         }
 
         private void permission_btn_Click(object sender, EventArgs e)
@@ -112,7 +116,7 @@ namespace reservepp
                                  radioButton2.Checked ? false : (bool?)null;
             var order = orders[0];
 
-            string result = ((TCKEmployee)userRepository.GetById(order.DocID)).AgreeOffer(isPermissionGranted);
+            string result = ((TCKEmployee)userService.GetById(321)).AgreeOffer(isPermissionGranted);
             Text_for_permision.Text = result;
 
             if (result == "Тобі потрібно обрати надавати дозвіл чи ні!")
