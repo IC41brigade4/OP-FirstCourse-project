@@ -115,8 +115,8 @@ namespace reservepp
             bool? isPermissionGranted = radioButton1.Checked ? true :
                                  radioButton2.Checked ? false : (bool?)null;
             var order = orders[0];
-
-            string result = ((TCKEmployee)userService.GetById(321)).AgreeOffer(isPermissionGranted);
+            User user = userService.GetById(DocId);
+            string result = ((TCKEmployee)userService.GetById(user.DocID)).AgreeOffer(isPermissionGranted);
             Text_for_permision.Text = result;
 
             if (result == "Тобі потрібно обрати надавати дозвіл чи ні!")
