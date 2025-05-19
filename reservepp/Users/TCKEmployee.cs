@@ -23,6 +23,10 @@ namespace reservepp
 
         public string AgreeOffer(bool? isPermissionGranted)
         {
+            if (OrderService == null)
+            {
+                return "Помилка: OrderService не ініціалізовано!";
+            }
             if (orderService.GetAllOrders().Count() == 0)
             {
                 return "Список запитів порожній.";

@@ -28,7 +28,11 @@ namespace reservepp
             this.orderRepository = orderRepository;
             this.userService = userService;
             this.orderService = orderService;
-            this.
+            foreach (var userInList in userRepository.GetAll())
+            {
+                userInList.UserService = userService;
+                userInList.OrderService = orderService;
+            }
             DocId = docId;
 
             User user = userRepository.GetById(DocId);

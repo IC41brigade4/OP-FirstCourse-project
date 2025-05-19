@@ -37,6 +37,12 @@ namespace reservepp
             Repository<Order> orderRepository = new Repository<Order>(orderStorage);
             var orderService = new OrderService(orderRepository);
 
+            foreach (var user in userRepository.GetAll())
+            {
+                user.UserService = userService;
+                user.OrderService = orderService;
+            }
+
             //Officer officer1 = new Officer("Андрій", "Покришка", 42, 1, "Не риба не м'ясо",
             //    false, "Жидомир", "of", "None", userService, orderService);
             //userService.AddUser(officer1);
