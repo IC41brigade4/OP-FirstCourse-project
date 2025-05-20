@@ -1,0 +1,103 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace reservepp
+{
+    public partial class RegisterForm : Form
+    {
+
+        UserRepository<UserEntity> userRepository;
+        OrderRepository orderRepository;
+        UserService userService;
+        List<Order> orders;
+        OrderService orderService;
+        public RegisterForm(UserRepository<UserEntity> userRepository, OrderRepository orderRepository, UserService userService, OrderService orderService)
+        {
+            this.userRepository = userRepository;
+            this.userService = userService;
+            this.orderRepository = orderRepository;
+            this.orderService = orderService;
+            InitializeComponent();
+            
+        }
+
+        private void label2_MouseClick(object sender, MouseEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void RegisterForm_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                this.Left += e.X - lastpoint.X;
+                this.Top += e.Y - lastpoint.Y;
+            }
+        }
+
+        Point lastpoint;
+
+        private void RegisterForm_MouseDown(object sender, MouseEventArgs e)
+        {
+            lastpoint = new Point(e.X, e.Y);
+        }
+
+        private void login_button_Click(object sender, EventArgs e)
+        {
+            LoginForm loginForm = new LoginForm(userRepository, orderRepository, orderService, userService);
+            loginForm.Show();
+            this.Close();
+        }
+
+        private void register_button_Click(object sender, EventArgs e)
+        {
+            string login = login_textbox.Text;
+            string password = password_textbox.Text;
+            string employee_key = key_textbox.Text;
+            string officer_key = "officer";
+            string tck_key = "tck";
+
+            if (!int.TryParse(login, out int docID))
+            {
+                MessageBox.Show("Логін має бути числом!");
+                return;
+            }
+            UserEntity user = new Conscript("Name", "Secondname", 20, docID, "Годен", false, "City", password, "None", userService, orderService);
+
+            if (employee_key == officer_key)
+            {
+                user = new Officer("Name", "Secondname", 20, docID, "Годен", false, "City", password, "None", userService, orderService);   
+            } 
+            else if (employee_key == tck_key)
+            {
+                user = new TCKEmployee("Name", "Secondname", 20, docID, "Годен", false, "City", password, "None", userService, orderService);
+            }
+
+            if (employee_key != "" && employee_key != officer_key && employee_key != tck_key)
+            {
+                MessageBox.Show("Такого ключа не існує!");
+            }
+            else
+            {
+                UserEntity dublicate = userRepository.GetById(docID);
+
+                if (dublicate != null)
+                {
+                    MessageBox.Show($"Користувач із docID = {docID} вже є оберіть інше.");
+                }
+                else
+                {
+                    userRepository.Add(user);
+                    MessageBox.Show("Користувач створений. Можете перейти та змінити інформацію.");
+                }
+            }
+        }
+    }
+}
