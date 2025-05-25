@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace reservepp
 {
-    internal interface IOrderRepository
+    internal interface ITckEmployeeService
     {
     }
 }

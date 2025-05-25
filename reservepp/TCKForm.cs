@@ -1,67 +1,57 @@
-﻿using Org.BouncyCastle.Crypto;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace reservepp
+﻿namespace reservepp
 {
     public partial class TCKForm : Form
     {
-        UserRepository<UserEntity> userRepository;
-        OrderRepository orderRepository;
-        UserService userService;
-        OrderService orderService;
-        int DocId;
-        List<Order> orders;
-        int counter = 0;
-        public TCKForm(UserRepository<UserEntity> userRepository, int docId, OrderRepository orderRepository, UserService userService, OrderService orderService)
+        private readonly IUserService _userService;
+        private readonly IOrderService _orderService;
+        private readonly TCKEmployeeActions _tckActions;
+        private int _docId;
+
+        public TCKForm(IUserService userService, IOrderService orderService)
         {
+            _userService = userService;
+            _orderService = orderService;
+            _tckActions = new TCKEmployeeActions(_orderService);
             InitializeComponent();
-            this.userRepository = userRepository;
-            this.orderRepository = orderRepository;
-            this.userService = userService;
-            this.orderService = orderService;
-            foreach (var userInList in userRepository.GetAll())
-            {
-                userInList.UserService = userService;
-                userInList.OrderService = orderService;
-            }
-            DocId = docId;
+        }
 
-            UserEntity user = userRepository.GetById(DocId);
-            orders = orderRepository.GetAll();
+        public void SetDocId(int docId)
+        {
+            _docId = docId;
+            LoadUserInfo();
+            LoadOrders();
+        }
 
+        private void LoadUserInfo()
+        {
+            var user = _userService.GetById(_docId);
             if (user == null)
             {
                 MessageBox.Show("Користувач не знайдений!");
                 return;
             }
 
-            // Оновлення тексту
             firstname_text.Text = $"Ім'я: {user.FirstName}";
             lastname_text.Text = $"Прізвище: {user.LastName}";
             age_text.Text = $"Вік: {user.Age}";
             docid_text.Text = $"Номер документа: {user.DocID}";
             city_text.Text = $"Місто прописки: {user.City}";
+        }
 
+        private void LoadOrders()
+        {
+            var orders = _orderService.GetAllOrders().ToList();
             if (orders.Count == 0)
             {
                 Text_for_permision.Text = "Немає ніяких запитів";
             }
             else
             {
-                var order1 = orders[0];
-                Text_for_permision.Text = $"Officer({order1.DocID}) mess:{order1.OrderText}, number:{order1.OrderNum}";
+                var order = orders[0];
+                Text_for_permision.Text = $"Officer({order.DocID}) mess:{order.OrderText}, number:{order.OrderNum}";
             }
-
         }
+
         private void label2_MouseClick(object sender, MouseEventArgs e)
         {
             this.Close();
@@ -85,9 +75,7 @@ namespace reservepp
 
         private void Change_btn_Click(object sender, EventArgs e)
         {
-
-            UserEntity user = userService.GetById(DocId);
-
+            var user = _userService.GetById(_docId);
             if (user == null)
             {
                 MessageBox.Show("Користувач не знайдений!");
@@ -111,16 +99,15 @@ namespace reservepp
             docid_text.Text = $"DocID: {user.DocID}";
             city_text.Text = $"City: {user.City}";
 
-            userService.UpdateUser(user);
+            _userService.UpdateUser(user);
         }
 
         private void permission_btn_Click(object sender, EventArgs e)
         {
             bool? isPermissionGranted = radioButton1.Checked ? true :
                                  radioButton2.Checked ? false : (bool?)null;
-            var order = orders[0];
-            UserEntity user = userService.GetById(DocId);
-            string result = ((TCKEmployee)userService.GetById(user.DocID)).AgreeOffer(isPermissionGranted);
+
+            string result = _tckActions.AgreeOffer(isPermissionGranted);
             Text_for_permision.Text = result;
 
             if (result == "Тобі потрібно обрати надавати дозвіл чи ні!")
@@ -129,14 +116,7 @@ namespace reservepp
             }
         }
 
-        private void save_btn_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void change_inf_btn_Click(object sender, EventArgs e)
-        {
-
-        }
+        private void save_btn_Click(object sender, EventArgs e) { }
+        private void change_inf_btn_Click(object sender, EventArgs e) { }
     }
 }

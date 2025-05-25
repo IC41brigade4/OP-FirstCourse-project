@@ -1,28 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿
 
 namespace reservepp
 {
-    public partial class OfficerOrder: Form
+    public partial class OfficerOrder : Form
     {
-        OrderRepository orderRepository;
-        UserService userService;
-        int DocId;
-        public OfficerOrder(OrderRepository orderRepository, int DocId, UserService userService)
+        private readonly IOrderService _orderService;
+        private readonly OfficerActions _officerActions;
+        private int _docId;
+
+        public OfficerOrder(IOrderService orderService)
         {
-            this.orderRepository = orderRepository;
-            this.DocId = DocId;
-            this.userService = userService;
+            _orderService = orderService;
+            _officerActions = new OfficerActions(_orderService);
             InitializeComponent();
         }
+
+        public void SetDocId(int docId)
+        {
+            _docId = docId;
+        }
+
         private void OfficerOrderForm_MouseMove(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
@@ -41,7 +38,15 @@ namespace reservepp
 
         private void permission_btn_Click(object sender, EventArgs e)
         {
-            ((Officer)userService.GetById(DocId)).makeOffer(details_textbox.Text, peoplenum_textbox.Text, DocId);
+            bool success = _officerActions.MakeOffer(details_textbox.Text, peoplenum_textbox.Text, _docId);
+
+            if (!success)
+            {
+                MessageBox.Show("Кількість людей має бути числом!");
+                return;
+            }
+
+            MessageBox.Show("Запит створено успішно!");
             this.Hide();
         }
 

@@ -1,29 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using Microsoft.Extensions.DependencyInjection;
 
 namespace reservepp
 {
     public partial class MainForm : Form
     {
-        UserRepository<UserEntity> userRepository;
-        OrderRepository orderRepository;
-        UserService userService;
-        OrderService orderService;
-        public MainForm(UserRepository<UserEntity> userRepository, OrderRepository orderRepository, UserService userService, OrderService orderService)
-        {
-            this.userRepository = userRepository;
-            this.orderRepository = orderRepository;
-            this.userService = userService;
-            this.orderService = orderService;
-            InitializeComponent();
+        private readonly IServiceProvider _serviceProvider;
 
+        public MainForm(IServiceProvider serviceProvider)
+        {
+            _serviceProvider = serviceProvider;
+            InitializeComponent();
         }
 
         private void label2_MouseClick(object sender, MouseEventArgs e)
@@ -49,16 +35,22 @@ namespace reservepp
 
         private void register_button_Click(object sender, EventArgs e)
         {
-            RegisterForm registerForm = new RegisterForm(userRepository, orderRepository, userService, orderService);
-            registerForm.Show();
-            this.Hide();
+            using (var scope = _serviceProvider.CreateScope())
+            {
+                var registerForm = scope.ServiceProvider.GetRequiredService<RegisterForm>();
+                registerForm.Show();
+                this.Hide();
+            }
         }
 
         private void login_button_Click(object sender, EventArgs e)
         {
-            LoginForm loginForm = new LoginForm(userRepository, orderRepository, orderService, userService);
-            loginForm.Show();
-            this.Hide();
+            using (var scope = _serviceProvider.CreateScope())
+            {
+                var loginForm = scope.ServiceProvider.GetRequiredService<LoginForm>();
+                loginForm.Show();
+                this.Hide();
+            }
         }
     }
 }

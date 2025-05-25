@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Extensions.DependencyInjection;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,20 +13,14 @@ namespace reservepp
 {
     public partial class RegisterForm : Form
     {
+        private readonly IUserService _userService;
+        private readonly IServiceProvider _serviceProvider;
 
-        UserRepository<UserEntity> userRepository;
-        OrderRepository orderRepository;
-        UserService userService;
-        List<Order> orders;
-        OrderService orderService;
-        public RegisterForm(UserRepository<UserEntity> userRepository, OrderRepository orderRepository, UserService userService, OrderService orderService)
+        public RegisterForm(IUserService userService, IServiceProvider serviceProvider)
         {
-            this.userRepository = userRepository;
-            this.userService = userService;
-            this.orderRepository = orderRepository;
-            this.orderService = orderService;
+            _userService = userService;
+            _serviceProvider = serviceProvider;
             InitializeComponent();
-            
         }
 
         private void label2_MouseClick(object sender, MouseEventArgs e)
@@ -51,9 +46,12 @@ namespace reservepp
 
         private void login_button_Click(object sender, EventArgs e)
         {
-            LoginForm loginForm = new LoginForm(userRepository, orderRepository, orderService, userService);
-            loginForm.Show();
-            this.Close();
+            using (var scope = _serviceProvider.CreateScope())
+            {
+                var loginForm = scope.ServiceProvider.GetRequiredService<LoginForm>();
+                loginForm.Show();
+                this.Close();
+            }
         }
 
         private void register_button_Click(object sender, EventArgs e)
@@ -69,35 +67,44 @@ namespace reservepp
                 MessageBox.Show("Логін має бути числом!");
                 return;
             }
-            UserEntity user = new Conscript("Name", "Secondname", 20, docID, "Годен", false, "City", password, "None", userService, orderService);
+
+            var existingUser = _userService.GetById(docID);
+            if (existingUser != null)
+            {
+                MessageBox.Show($"Користувач із docID = {docID} вже є оберіть інше.");
+                return;
+            }
+
+            var user = new UserDto
+            {
+                DocID = docID,
+                FirstName = "Name",
+                LastName = "Secondname",
+                Age = 20,
+                MedicalExaminationResult = "Годен",
+                HasDeferment = false,
+                City = "City",
+                HashedPassword = password, // Буде захешовано в сервісі
+                ArmyUnit = "None",
+                Role = "Conscript"
+            };
 
             if (employee_key == officer_key)
             {
-                user = new Officer("Name", "Secondname", 20, docID, "Годен", false, "City", password, "None", userService, orderService);   
-            } 
+                user.Role = "Officer";
+            }
             else if (employee_key == tck_key)
             {
-                user = new TCKEmployee("Name", "Secondname", 20, docID, "Годен", false, "City", password, "None", userService, orderService);
+                user.Role = "TCKEmployee";
             }
-
-            if (employee_key != "" && employee_key != officer_key && employee_key != tck_key)
+            else if (!string.IsNullOrEmpty(employee_key))
             {
                 MessageBox.Show("Такого ключа не існує!");
+                return;
             }
-            else
-            {
-                UserEntity dublicate = userRepository.GetById(docID);
 
-                if (dublicate != null)
-                {
-                    MessageBox.Show($"Користувач із docID = {docID} вже є оберіть інше.");
-                }
-                else
-                {
-                    userRepository.Add(user);
-                    MessageBox.Show("Користувач створений. Можете перейти та змінити інформацію.");
-                }
-            }
+            _userService.AddUser(user);
+            MessageBox.Show("Користувач створений. Можете перейти та змінити інформацію.");
         }
     }
 }

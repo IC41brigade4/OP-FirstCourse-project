@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Extensions.DependencyInjection;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,20 +11,16 @@ using System.Windows.Forms;
 
 namespace reservepp
 {
-    public partial class LoginForm: Form
+    public partial class LoginForm : Form
     {
-        UserRepository<UserEntity> userRepository;
-        OrderRepository orderRepository;
-        UserService userService;
-        OrderService orderService;
-        public LoginForm(UserRepository<UserEntity> userRepository, OrderRepository orderRepository, OrderService orderService, UserService userService)
+        private readonly IUserService _userService;
+        private readonly IServiceProvider _serviceProvider;
+
+        public LoginForm(IUserService userService, IServiceProvider serviceProvider)
         {
-            this.userRepository = userRepository;
-            this.orderRepository = orderRepository;
-            this.orderService = orderService;
-            this.userService = userService;
+            _userService = userService;
+            _serviceProvider = serviceProvider;
             InitializeComponent();
-            
         }
 
         private void label2_MouseClick(object sender, MouseEventArgs e)
@@ -58,57 +55,56 @@ namespace reservepp
                 return;
             }
 
-            UserEntity user = userRepository.GetById(docID);
-
+            var user = _userService.GetById(docID);
             if (user == null)
             {
                 MessageBox.Show("Користувач не знайдений!");
                 return;
             }
 
-            if (Program.letMeIn(password, docID, userRepository))
+            if (Program.LetMeIn(password, docID, _userService))
             {
-                if (user is Conscript)
+                using (var scope = _serviceProvider.CreateScope())
                 {
-                    ConscriptForm conscriptForm = new ConscriptForm(userRepository, docID);
-                    conscriptForm.Show(); // Відкриваємо нову форму
+                    switch (user.Role)
+                    {
+                        case "Conscript":
+                            var conscriptForm = scope.ServiceProvider.GetRequiredService<ConscriptForm>();
+                            conscriptForm.SetDocId(docID);
+                            conscriptForm.Show();
+                            break;
+                        case "Officer":
+                            var officerForm = scope.ServiceProvider.GetRequiredService<OfficerForm>();
+                            officerForm.SetDocId(docID);
+                            officerForm.Show();
+                            break;
+                        case "TCKEmployee":
+                            var tckForm = scope.ServiceProvider.GetRequiredService<TCKForm>();
+                            tckForm.SetDocId(docID);
+                            tckForm.Show();
+                            break;
+                    }
                     this.Close();
                 }
-                else if (user is Officer)
-                {
-                    OfficerForm officerForm = new OfficerForm(userRepository, docID, orderRepository, userService);
-                    officerForm.Show(); // Відкриваємо нову форму
-                    this.Close();
-                }
-                else if(user is TCKEmployee)
-                {
-                    TCKForm tckForm = new TCKForm(userRepository, docID, orderRepository, userService, orderService);
-                    tckForm.Show(); // Відкриваємо нову форму
-                    this.Close();
-                }
-                
             }
             else
             {
-                MessageBox.Show(" Невірний пароль або логін, спробуйте ще");
+                MessageBox.Show("Невірний пароль або логін, спробуйте ще");
             }
         }
 
         private void register_button_Click(object sender, EventArgs e)
         {
-            RegisterForm registerForm = new RegisterForm(userRepository, orderRepository, userService, orderService );
-            registerForm.Show();
-            this.Close();
+            using (var scope = _serviceProvider.CreateScope())
+            {
+                var registerForm = scope.ServiceProvider.GetRequiredService<RegisterForm>();
+                registerForm.Show();
+                this.Close();
+            }
         }
 
-        private void password_text_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void password_textbox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+        private void password_text_Click(object sender, EventArgs e) { }
+        private void password_textbox_TextChanged(object sender, EventArgs e) { }
     }
 }
+

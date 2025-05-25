@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Extensions.DependencyInjection;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,21 +12,26 @@ using System.Windows.Forms;
 
 namespace reservepp
 {
-    public partial class OfficerForm: Form
+    public partial class OfficerForm : Form
     {
-        UserRepository<UserEntity> userRepository;
-        OrderRepository orderRepository;
-        UserService userService;
-        int DocId;
-        int person_id;
-        public OfficerForm(UserRepository<UserEntity> userRepository, int docId, OrderRepository orderRepository, UserService userService)
+        private readonly IUserService _userService;
+        private readonly IOrderService _orderService;
+        private readonly IServiceProvider _serviceProvider;
+        private int _docId;
+        private int _personId;
+
+        public OfficerForm(IUserService userService, IOrderService orderService, IServiceProvider serviceProvider)
         {
+            _userService = userService;
+            _orderService = orderService;
+            _serviceProvider = serviceProvider;
             InitializeComponent();
-            this.userRepository = userRepository;
-            DocId = docId;
-            person_id = DocId;
-            this.orderRepository = orderRepository;
-            this.userService = userService;
+        }
+
+        public void SetDocId(int docId)
+        {
+            _docId = docId;
+            _personId = docId;
         }
 
         private void label2_MouseClick(object sender, MouseEventArgs e)
@@ -51,19 +57,15 @@ namespace reservepp
 
         private void get_inf_btn_Click(object sender, EventArgs e)
         {
-            
-            UserEntity user = userRepository.GetById(person_id);
+            var user = _userService.GetById(_personId);
+            if (user == null) return;
 
-            
-
-            // Оновлення тексту
             firstname_text.Text = $"First name: {user.FirstName}";
             lastname_text.Text = $"Last name: {user.LastName}";
             age_text.Text = $"Age: {user.Age}";
             docid_text.Text = $"DocID: {user.DocID}";
             city_text.Text = $"City: {user.City}";
 
-            // Переконайся, що елементи відображаються
             firstname_text.Show();
             lastname_text.Show();
             age_text.Show();
@@ -76,8 +78,7 @@ namespace reservepp
             this.Inf_panel_change.Visible = true;
             this.Change_btn.Visible = true;
 
-            UserEntity user = userRepository.GetById(person_id);
-
+            var user = _userService.GetById(_personId);
             if (user == null)
             {
                 MessageBox.Show("Користувач не знайдений!");
@@ -101,18 +102,17 @@ namespace reservepp
             docid_text.Text = $"DocID: {user.DocID}";
             city_text.Text = $"City: {user.City}";
 
-            userRepository.Update(user);
+            _userService.UpdateUser(user);
         }
 
         private void personal_inf_Click(object sender, EventArgs e)
         {
-            person_id = DocId;
+            _personId = _docId;
             this.enter_doc_textbox.Visible = false;
             this.enter_doc_text.Visible = false;
             this.save_doc_btn.Visible = false;
 
-            UserEntity user = userRepository.GetById(person_id);
-
+            var user = _userService.GetById(_personId);
             if (user == null)
             {
                 MessageBox.Show("Користувач не знайдений!");
@@ -124,7 +124,6 @@ namespace reservepp
             age_text.Text = $"Age: {user.Age}";
             docid_text.Text = $"DocID: {user.DocID}";
             city_text.Text = $"City: {user.City}";
-
         }
 
         private void Conscript_inf_Click_1(object sender, EventArgs e)
@@ -136,14 +135,13 @@ namespace reservepp
 
         private void save_doc_btn_Click(object sender, EventArgs e)
         {
-            if (!int.TryParse(enter_doc_textbox.Text, out person_id))
+            if (!int.TryParse(enter_doc_textbox.Text, out _personId))
             {
                 MessageBox.Show("Документ має номер а не незрозумілі символи");
                 return;
             }
 
-            UserEntity user = userRepository.GetById(person_id);
-
+            var user = _userService.GetById(_personId);
             if (user == null)
             {
                 MessageBox.Show("Користувач не знайдений!");
@@ -159,9 +157,12 @@ namespace reservepp
 
         private void permission_btn_Click(object sender, EventArgs e)
         {
-            OfficerOrder officerOrder = new OfficerOrder(orderRepository, DocId, userService);
-            officerOrder.Show(); // Відкриваємо нову форму
+            using (var scope = _serviceProvider.CreateScope())
+            {
+                var officerOrder = scope.ServiceProvider.GetRequiredService<OfficerOrder>();
+                officerOrder.SetDocId(_docId);
+                officerOrder.Show();
+            }
         }
-
     }
 }

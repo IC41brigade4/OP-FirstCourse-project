@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace reservepp
 {
-    public class OrderEntity
+    public class OrderDto
     {
         public int Id { get; set; } // Auto-increment primary key
         public int DocID { get; set; }
