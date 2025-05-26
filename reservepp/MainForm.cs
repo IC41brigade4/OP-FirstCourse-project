@@ -35,22 +35,33 @@ namespace reservepp
 
         private void register_button_Click(object sender, EventArgs e)
         {
-            using (var scope = _serviceProvider.CreateScope())
+            var scope = _serviceProvider.CreateScope();
+            var registerForm = scope.ServiceProvider.GetRequiredService<RegisterForm>();
+
+            registerForm.FormClosed += (s, args) =>
             {
-                var registerForm = scope.ServiceProvider.GetRequiredService<RegisterForm>();
-                registerForm.Show();
-                this.Hide();
-            }
+                this.Show();
+                scope.Dispose();
+            };
+
+            registerForm.Show();
+            this.Hide();
         }
 
         private void login_button_Click(object sender, EventArgs e)
         {
-            using (var scope = _serviceProvider.CreateScope())
+            var scope = _serviceProvider.CreateScope();
+            var loginForm = scope.ServiceProvider.GetRequiredService<LoginForm>();
+
+            loginForm.FormClosed += (s, args) =>
             {
-                var loginForm = scope.ServiceProvider.GetRequiredService<LoginForm>();
-                loginForm.Show();
-                this.Hide();
-            }
+                this.Show();
+                scope.Dispose(); // очищення коли форма закрита
+            };
+
+            loginForm.Show();
+            this.Hide();
         }
+
     }
 }

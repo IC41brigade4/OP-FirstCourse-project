@@ -46,12 +46,17 @@ namespace reservepp
 
         private void login_button_Click(object sender, EventArgs e)
         {
-            using (var scope = _serviceProvider.CreateScope())
+            var scope = _serviceProvider.CreateScope(); // НЕ using, щоб scope жив поки форма відкрита
+            var loginForm = scope.ServiceProvider.GetRequiredService<LoginForm>();
+
+            loginForm.FormClosed += (s, args) =>
             {
-                var loginForm = scope.ServiceProvider.GetRequiredService<LoginForm>();
-                loginForm.Show();
-                this.Close();
-            }
+                scope.Dispose(); // Звільняємо ресурси, коли форма закриється
+                this.Show();     // Показати цю форму, якщо треба повернутись
+            };
+
+            loginForm.Show();
+            this.Hide();
         }
 
         private void register_button_Click(object sender, EventArgs e)

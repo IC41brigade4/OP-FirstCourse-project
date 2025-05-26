@@ -13,6 +13,8 @@
             _orderService = orderService;
             _tckActions = new TCKEmployeeActions(_orderService);
             InitializeComponent();
+            this.Size = new Size(933, 987);
+            this.StartPosition = FormStartPosition.CenterScreen;
         }
 
         public void SetDocId(int docId)

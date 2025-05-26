@@ -157,12 +157,21 @@ namespace reservepp
 
         private void permission_btn_Click(object sender, EventArgs e)
         {
-            using (var scope = _serviceProvider.CreateScope())
+            var scope = _serviceProvider.CreateScope();
+            var officerOrder = scope.ServiceProvider.GetRequiredService<OfficerOrder>();
+            officerOrder.SetDocId(_docId);
+            officerOrder.Show();
+
+            // Якщо хочеш сховати поточну форму (без закриття)
+            this.Hide();
+
+            // Якщо потрібно, щоб при закритті OfficerOrder показати назад цю форму:
+            officerOrder.FormClosed += (s, args) =>
             {
-                var officerOrder = scope.ServiceProvider.GetRequiredService<OfficerOrder>();
-                officerOrder.SetDocId(_docId);
-                officerOrder.Show();
-            }
+                this.Show();
+                scope.Dispose(); // Вчасно звільняємо scope, коли форма закрилась
+            };
         }
+
     }
 }

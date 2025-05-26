@@ -64,27 +64,36 @@ namespace reservepp
 
             if (Program.LetMeIn(password, docID, _userService))
             {
-                using (var scope = _serviceProvider.CreateScope())
+                var scope = _serviceProvider.CreateScope(); // НЕ using
+                Form nextForm = null;
+
+                switch (user.Role)
                 {
-                    switch (user.Role)
+                    case "Conscript":
+                        nextForm = scope.ServiceProvider.GetRequiredService<ConscriptForm>();
+                        ((ConscriptForm)nextForm).SetDocId(docID);
+                        break;
+                    case "Officer":
+                        nextForm = scope.ServiceProvider.GetRequiredService<OfficerForm>();
+                        ((OfficerForm)nextForm).SetDocId(docID);
+                        break;
+                    case "TCKEmployee":
+                        nextForm = scope.ServiceProvider.GetRequiredService<TCKForm>();
+                        ((TCKForm)nextForm).SetDocId(docID);
+                        break;
+                }
+
+                if (nextForm != null)
+                {
+                    // Після закриття нової форми — звільняємо scope і виходимо
+                    nextForm.FormClosed += (s, args) =>
                     {
-                        case "Conscript":
-                            var conscriptForm = scope.ServiceProvider.GetRequiredService<ConscriptForm>();
-                            conscriptForm.SetDocId(docID);
-                            conscriptForm.Show();
-                            break;
-                        case "Officer":
-                            var officerForm = scope.ServiceProvider.GetRequiredService<OfficerForm>();
-                            officerForm.SetDocId(docID);
-                            officerForm.Show();
-                            break;
-                        case "TCKEmployee":
-                            var tckForm = scope.ServiceProvider.GetRequiredService<TCKForm>();
-                            tckForm.SetDocId(docID);
-                            tckForm.Show();
-                            break;
-                    }
-                    this.Close();
+                        scope.Dispose();
+                        Application.Exit(); // повністю завершує додаток
+                    };
+
+                    nextForm.Show();
+                    this.Hide();
                 }
             }
             else
@@ -93,14 +102,20 @@ namespace reservepp
             }
         }
 
+
         private void register_button_Click(object sender, EventArgs e)
         {
-            using (var scope = _serviceProvider.CreateScope())
+            var scope = _serviceProvider.CreateScope(); // НЕ using
+            var registerForm = scope.ServiceProvider.GetRequiredService<RegisterForm>();
+
+            registerForm.FormClosed += (s, args) =>
             {
-                var registerForm = scope.ServiceProvider.GetRequiredService<RegisterForm>();
-                registerForm.Show();
-                this.Close();
-            }
+                scope.Dispose(); // звільняємо ресурси тільки після закриття форми
+                Application.Exit(); // або this.Show() — залежно від логіки
+            };
+
+            registerForm.Show();
+            this.Hide();
         }
 
         private void password_text_Click(object sender, EventArgs e) { }

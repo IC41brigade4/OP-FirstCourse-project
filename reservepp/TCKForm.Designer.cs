@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            
             panel1 = new Panel();
             button_exit = new Label();
             TCK_title = new Label();
@@ -425,7 +426,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Bisque;
-            ClientSize = new Size(933, 1002);
+            ClientSize = new Size(933, 987);
             Controls.Add(radioButton2);
             Controls.Add(radioButton1);
             Controls.Add(panel2);
