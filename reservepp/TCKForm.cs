@@ -11,7 +11,7 @@
         {
             _userService = userService;
             _orderService = orderService;
-            _tckActions = new TCKEmployeeActions(_orderService);
+            _tckActions = new TCKEmployeeActions(_orderService, _userService); // ← Додаємо userService
             InitializeComponent();
             this.Size = new Size(933, 987);
             this.StartPosition = FormStartPosition.CenterScreen;

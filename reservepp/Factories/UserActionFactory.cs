@@ -19,7 +19,7 @@ namespace reservepp
             {
                 "Officer" => new OfficerActions(_orderService),
                 "Conscript" => new ConscriptActions(_userService),
-                "TCKEmployee" => new TCKEmployeeActions(_orderService),
+                "TCKEmployee" => new TCKEmployeeActions(_orderService, _userService),
                 _ => null
             };
         }

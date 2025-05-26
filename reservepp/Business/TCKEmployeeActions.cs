@@ -1,15 +1,19 @@
-﻿
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace reservepp
 {
     public class TCKEmployeeActions
     {
         private readonly IOrderService _orderService;
+        private readonly IUserService _userService;
         private int _counter = 0;
 
-        public TCKEmployeeActions(IOrderService orderService)
+        public TCKEmployeeActions(IOrderService orderService, IUserService userService)
         {
             _orderService = orderService;
+            _userService = userService;
         }
 
         public string AgreeOffer(bool? isPermissionGranted)
@@ -23,28 +27,50 @@ namespace reservepp
 
             if (_counter >= orders.Count)
             {
-                return "Більше запитів немає";
+                return "Більше запитів немає.";
             }
 
             var order = orders[_counter];
 
+            if (isPermissionGranted == null)
+            {
+                return "Тобі потрібно обрати надавати дозвіл чи ні!";
+            }
+
             if (isPermissionGranted == true)
             {
-                order.Status = "Permission granted";
-            }
-            else if (isPermissionGranted == false)
-            {
-                order.Status = "Permission denied";
+                var conscripts = _userService.GetUsersByRole("Conscript")
+                                             .Where(u => u.ArmyUnit == "none")
+                                             .Take(order.OrderNum) // тільки вказана кількість
+                                             .ToList();
+
+                if (conscripts.Count == 0)
+                {
+                    order.Status = "Прийнято, але призовників немає.";
+                    _orderService.UpdateOrder(order);
+                    _counter++;
+                    return "Призовники відсутні.";
+                }
+
+                var rnd = new Random();
+                foreach (var user in conscripts)
+                {
+                    string unit = rnd.Next(1, 4).ToString(); // "1", "2", "3"
+                    user.ArmyUnit = unit;
+                    _userService.UpdateUser(user);
+                }
+
+                order.Status = $"Прийнято ({conscripts.Count}/{order.OrderNum})";
             }
             else
             {
-                return "Тобі потрібно обрати надавати дозвіл чи ні!";
+                order.Status = "Відхилено";
             }
 
             _orderService.UpdateOrder(order);
             _counter++;
 
-            return $"Officer({order.DocID}) mess:{order.OrderText}, number:{order.OrderNum}";
+            return $"OrderID: {order.OrderID}, DocID: {order.DocID}, Статус: {order.Status}";
         }
 
         public void ResetCounter()

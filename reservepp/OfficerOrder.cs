@@ -47,12 +47,12 @@ namespace reservepp
             }
 
             MessageBox.Show("Запит створено успішно!");
-            this.Hide();
+            this.Close();
         }
 
         private void button_exit_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            this.Close();
         }
     }
 }
