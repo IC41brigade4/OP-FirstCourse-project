@@ -52,10 +52,10 @@ namespace reservepp
 
                 if (conscripts.Count == 0)
                 {
-                    MessageBox.Show("Прийнято, але призовників немає.");
+                    order.Status = "Прийнято, але призовників немає.";
                     _orderService.UpdateOrder(order);
                     _counter++;
-                    return "Призовники відсутні.";
+                    return $"⚠️ OrderID {order.OrderID} → Прийнято, але призовників немає.";
                 }
 
                 var rnd = new Random();
@@ -76,7 +76,7 @@ namespace reservepp
             _orderService.UpdateOrder(order);
             _counter++;
 
-            return $"OrderID: {order.OrderID}, DocID: {order.DocID}, Статус: {order.Status}";
+            return $"OrderID {order.OrderID} — Officer {order.DocID} → {order.Status}";
         }
         public Order? GetCurrentOrder()
         {

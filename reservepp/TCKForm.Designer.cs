@@ -54,7 +54,7 @@
             permission_btn = new Button();
             permission_text = new Label();
             panel2 = new Panel();
-            Text_for_permision = new Label();
+            Text_for_permision = new TextBox();
             radioButton1 = new RadioButton();
             radioButton2 = new RadioButton();
             panel1.SuspendLayout();
@@ -70,10 +70,17 @@
             panel1.Controls.Add(TCK_title);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
-            panel1.Margin = new Padding(4, 4, 4, 4);
+            panel1.Margin = new Padding(4);
             panel1.Name = "panel1";
             panel1.Size = new Size(812, 82);
             panel1.TabIndex = 0;
+
+            this.Size = new Size(812, 740);
+            this.MaximumSize = new Size(812, 740);
+            this.MinimumSize = new Size(812, 740);
+            this.AutoScaleMode = AutoScaleMode.None;
+            this.AutoSize = false;
+
             // 
             // button_exit
             // 
@@ -119,7 +126,7 @@
             get_inf_btn.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
             get_inf_btn.ForeColor = Color.Bisque;
             get_inf_btn.Location = new Point(24, 152);
-            get_inf_btn.Margin = new Padding(4, 4, 4, 4);
+            get_inf_btn.Margin = new Padding(4);
             get_inf_btn.Name = "get_inf_btn";
             get_inf_btn.Size = new Size(323, 44);
             get_inf_btn.TabIndex = 7;
@@ -135,7 +142,7 @@
             Inf_panel.Controls.Add(lastname_text);
             Inf_panel.Controls.Add(firstname_text);
             Inf_panel.Location = new Point(24, 216);
-            Inf_panel.Margin = new Padding(4, 4, 4, 4);
+            Inf_panel.Margin = new Padding(4);
             Inf_panel.Name = "Inf_panel";
             Inf_panel.Size = new Size(323, 201);
             Inf_panel.TabIndex = 8;
@@ -207,7 +214,7 @@
             change_inf_btn.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
             change_inf_btn.ForeColor = Color.Bisque;
             change_inf_btn.Location = new Point(414, 152);
-            change_inf_btn.Margin = new Padding(4, 4, 4, 4);
+            change_inf_btn.Margin = new Padding(4);
             change_inf_btn.Name = "change_inf_btn";
             change_inf_btn.Size = new Size(357, 44);
             change_inf_btn.TabIndex = 10;
@@ -239,7 +246,7 @@
             Inf_panel_change.Controls.Add(lastname_text2);
             Inf_panel_change.Controls.Add(firstname_text2);
             Inf_panel_change.Location = new Point(414, 216);
-            Inf_panel_change.Margin = new Padding(4, 4, 4, 4);
+            Inf_panel_change.Margin = new Padding(4);
             Inf_panel_change.Name = "Inf_panel_change";
             Inf_panel_change.Size = new Size(357, 201);
             Inf_panel_change.TabIndex = 11;
@@ -248,7 +255,7 @@
             // 
             city_textbox.BorderStyle = BorderStyle.None;
             city_textbox.Location = new Point(130, 124);
-            city_textbox.Margin = new Padding(4, 4, 4, 4);
+            city_textbox.Margin = new Padding(4);
             city_textbox.Multiline = true;
             city_textbox.Name = "city_textbox";
             city_textbox.Size = new Size(203, 23);
@@ -258,7 +265,7 @@
             // 
             age_textbox.BorderStyle = BorderStyle.None;
             age_textbox.Location = new Point(130, 88);
-            age_textbox.Margin = new Padding(4, 4, 4, 4);
+            age_textbox.Margin = new Padding(4);
             age_textbox.Multiline = true;
             age_textbox.Name = "age_textbox";
             age_textbox.Size = new Size(203, 23);
@@ -268,7 +275,7 @@
             // 
             lastname_textbox.BorderStyle = BorderStyle.None;
             lastname_textbox.Location = new Point(130, 54);
-            lastname_textbox.Margin = new Padding(4, 4, 4, 4);
+            lastname_textbox.Margin = new Padding(4);
             lastname_textbox.Multiline = true;
             lastname_textbox.Name = "lastname_textbox";
             lastname_textbox.Size = new Size(203, 23);
@@ -278,7 +285,7 @@
             // 
             firstname_textbox.BorderStyle = BorderStyle.None;
             firstname_textbox.Location = new Point(130, 19);
-            firstname_textbox.Margin = new Padding(4, 4, 4, 4);
+            firstname_textbox.Margin = new Padding(4);
             firstname_textbox.Multiline = true;
             firstname_textbox.Name = "firstname_textbox";
             firstname_textbox.Size = new Size(203, 23);
@@ -339,7 +346,7 @@
             Change_btn.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
             Change_btn.ForeColor = Color.Bisque;
             Change_btn.Location = new Point(507, 436);
-            Change_btn.Margin = new Padding(4, 4, 4, 4);
+            Change_btn.Margin = new Padding(4);
             Change_btn.Name = "Change_btn";
             Change_btn.Size = new Size(158, 40);
             Change_btn.TabIndex = 12;
@@ -354,7 +361,7 @@
             permission_btn.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
             permission_btn.ForeColor = Color.Bisque;
             permission_btn.Location = new Point(218, 688);
-            permission_btn.Margin = new Padding(4, 4, 4, 4);
+            permission_btn.Margin = new Padding(4);
             permission_btn.Name = "permission_btn";
             permission_btn.Size = new Size(197, 44);
             permission_btn.TabIndex = 15;
@@ -379,27 +386,27 @@
             panel2.BackColor = Color.BurlyWood;
             panel2.Controls.Add(Text_for_permision);
             panel2.Location = new Point(21, 555);
-            panel2.Margin = new Padding(4, 4, 4, 4);
+            panel2.Margin = new Padding(4);
             panel2.Name = "panel2";
             panel2.Size = new Size(750, 122);
             panel2.TabIndex = 9;
             // 
             // Text_for_permision
             // 
-            Text_for_permision.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            Text_for_permision.ForeColor = Color.SaddleBrown;
-            Text_for_permision.Location = new Point(18, 14);
-            Text_for_permision.Margin = new Padding(4, 0, 4, 0);
+            Text_for_permision.Location = new Point(12, 16);
+            Text_for_permision.Multiline = true;
             Text_for_permision.Name = "Text_for_permision";
-            Text_for_permision.Size = new Size(708, 88);
-            Text_for_permision.TabIndex = 5;
+            Text_for_permision.ReadOnly = true;
+            Text_for_permision.ScrollBars = ScrollBars.Vertical;
+            Text_for_permision.Size = new Size(724, 90);
+            Text_for_permision.TabIndex = 0;
             // 
             // radioButton1
             // 
             radioButton1.AutoSize = true;
             radioButton1.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             radioButton1.Location = new Point(39, 697);
-            radioButton1.Margin = new Padding(4, 4, 4, 4);
+            radioButton1.Margin = new Padding(4);
             radioButton1.Name = "radioButton1";
             radioButton1.Size = new Size(64, 22);
             radioButton1.TabIndex = 17;
@@ -412,7 +419,7 @@
             radioButton2.AutoSize = true;
             radioButton2.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             radioButton2.Location = new Point(122, 698);
-            radioButton2.Margin = new Padding(4, 4, 4, 4);
+            radioButton2.Margin = new Padding(4);
             radioButton2.Name = "radioButton2";
             radioButton2.Size = new Size(77, 22);
             radioButton2.TabIndex = 18;
@@ -422,8 +429,7 @@
             // 
             // TCKForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
+            AutoScaleMode = AutoScaleMode.None;
             BackColor = Color.Bisque;
             ClientSize = new Size(812, 740);
             Controls.Add(radioButton2);
@@ -440,7 +446,7 @@
             Controls.Add(get_inf_text);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
-            Margin = new Padding(4, 4, 4, 4);
+            Margin = new Padding(4);
             Name = "TCKForm";
             Text = "2";
             MouseDown += RegisterForm_MouseDown;
@@ -452,6 +458,7 @@
             Inf_panel_change.ResumeLayout(false);
             Inf_panel_change.PerformLayout();
             panel2.ResumeLayout(false);
+            panel2.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -484,9 +491,9 @@
         private Button permission_btn;
         private Label permission_text;
         private Panel panel2;
-        private Label Text_for_permision;
         private RadioButton radioButton1;
         private RadioButton radioButton2;
+        private TextBox Text_for_permision;
     }
 }
 

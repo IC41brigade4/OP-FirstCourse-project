@@ -46,13 +46,14 @@
 
             if (order == null)
             {
-                Text_for_permision.Text = "Немає ніяких запитів або всі вже оброблені.";
+                Text_for_permision.AppendText("Всі запити оброблено.\r\n");
             }
             else
             {
-                Text_for_permision.Text = $"Officer({order.DocID}) mess:{order.OrderText}, number:{order.OrderNum}";
+                Text_for_permision.AppendText($"Офер від офіцера {order.DocID}: \"{order.OrderText}\" — кількість призовників: {order.OrderNum}\r\n");
             }
         }
+
 
         private void label2_MouseClick(object sender, MouseEventArgs e)
         {
@@ -107,18 +108,20 @@
         private void permission_btn_Click(object sender, EventArgs e)
         {
             bool? isPermissionGranted = radioButton1.Checked ? true :
-                                 radioButton2.Checked ? false : (bool?)null;
+                                         radioButton2.Checked ? false : (bool?)null;
 
             string result = _tckActions.AgreeOffer(isPermissionGranted);
-            Text_for_permision.Text = result;
 
             if (result == "Тобі потрібно обрати надавати дозвіл чи ні!")
             {
                 MessageBox.Show(result);
+                return;
             }
 
-            LoadOrders(); // ← додай це, щоб одразу відобразити наступний Order
+            Text_for_permision.AppendText($"Результат: {result}\r\n\r\n");
+            LoadOrders(); // показати наступний офер
         }
+
 
         private void save_btn_Click(object sender, EventArgs e) { }
         private void change_inf_btn_Click(object sender, EventArgs e) { }
