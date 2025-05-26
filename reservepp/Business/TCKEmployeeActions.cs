@@ -39,14 +39,20 @@ namespace reservepp
 
             if (isPermissionGranted == true)
             {
+                //var allConscripts = _userService.GetUsersByRole("Conscript").ToList();
+                //foreach (var u in allConscripts)
+                //{
+                //    MessageBox.Show($"User: {u.FirstName}, ArmyUnit: '{u.ArmyUnit}'");
+                //}
+
                 var conscripts = _userService.GetUsersByRole("Conscript")
-                                             .Where(u => u.ArmyUnit == "none")
+                                             .Where(u => u.ArmyUnit == "None")
                                              .Take(order.OrderNum) // тільки вказана кількість
                                              .ToList();
 
                 if (conscripts.Count == 0)
                 {
-                    order.Status = "Прийнято, але призовників немає.";
+                    MessageBox.Show("Прийнято, але призовників немає.");
                     _orderService.UpdateOrder(order);
                     _counter++;
                     return "Призовники відсутні.";
@@ -72,6 +78,16 @@ namespace reservepp
 
             return $"OrderID: {order.OrderID}, DocID: {order.DocID}, Статус: {order.Status}";
         }
+        public Order? GetCurrentOrder()
+        {
+            var orders = _orderService.GetAllOrders().ToList();
+            if (_counter < orders.Count)
+            {
+                return orders[_counter];
+            }
+            return null;
+        }
+
 
         public void ResetCounter()
         {

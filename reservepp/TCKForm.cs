@@ -42,14 +42,14 @@
 
         private void LoadOrders()
         {
-            var orders = _orderService.GetAllOrders().ToList();
-            if (orders.Count == 0)
+            var order = _tckActions.GetCurrentOrder();
+
+            if (order == null)
             {
-                Text_for_permision.Text = "Немає ніяких запитів";
+                Text_for_permision.Text = "Немає ніяких запитів або всі вже оброблені.";
             }
             else
             {
-                var order = orders[0];
                 Text_for_permision.Text = $"Officer({order.DocID}) mess:{order.OrderText}, number:{order.OrderNum}";
             }
         }
@@ -116,6 +116,8 @@
             {
                 MessageBox.Show(result);
             }
+
+            LoadOrders(); // ← додай це, щоб одразу відобразити наступний Order
         }
 
         private void save_btn_Click(object sender, EventArgs e) { }
