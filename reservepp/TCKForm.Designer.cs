@@ -31,7 +31,6 @@
             panel1 = new Panel();
             button_exit = new Label();
             TCK_title = new Label();
-            get_inf_text = new Label();
             get_inf_btn = new Button();
             Inf_panel = new Panel();
             city_text = new Label();
@@ -40,7 +39,6 @@
             lastname_text = new Label();
             firstname_text = new Label();
             change_inf_btn = new Button();
-            change_inf_text = new Label();
             Inf_panel_change = new Panel();
             city_textbox = new TextBox();
             age_textbox = new TextBox();
@@ -74,13 +72,6 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(812, 82);
             panel1.TabIndex = 0;
-
-            this.Size = new Size(812, 740);
-            this.MaximumSize = new Size(812, 740);
-            this.MinimumSize = new Size(812, 740);
-            this.AutoScaleMode = AutoScaleMode.None;
-            this.AutoSize = false;
-
             // 
             // button_exit
             // 
@@ -106,18 +97,6 @@
             TCK_title.Size = new Size(333, 44);
             TCK_title.TabIndex = 0;
             TCK_title.Text = "TCK employee";
-            // 
-            // get_inf_text
-            // 
-            get_inf_text.AutoSize = true;
-            get_inf_text.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            get_inf_text.ForeColor = Color.SaddleBrown;
-            get_inf_text.Location = new Point(20, 111);
-            get_inf_text.Margin = new Padding(4, 0, 4, 0);
-            get_inf_text.Name = "get_inf_text";
-            get_inf_text.Size = new Size(281, 24);
-            get_inf_text.TabIndex = 6;
-            get_inf_text.Text = "Get all information about yourself";
             // 
             // get_inf_btn
             // 
@@ -221,18 +200,6 @@
             change_inf_btn.Text = "Change information";
             change_inf_btn.UseVisualStyleBackColor = false;
             change_inf_btn.Click += change_inf_btn_Click;
-            // 
-            // change_inf_text
-            // 
-            change_inf_text.AutoSize = true;
-            change_inf_text.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            change_inf_text.ForeColor = Color.SaddleBrown;
-            change_inf_text.Location = new Point(482, 111);
-            change_inf_text.Margin = new Padding(4, 0, 4, 0);
-            change_inf_text.Name = "change_inf_text";
-            change_inf_text.Size = new Size(174, 24);
-            change_inf_text.TabIndex = 9;
-            change_inf_text.Text = "Change information";
             // 
             // Inf_panel_change
             // 
@@ -440,13 +407,13 @@
             Controls.Add(Change_btn);
             Controls.Add(Inf_panel_change);
             Controls.Add(change_inf_btn);
-            Controls.Add(change_inf_text);
             Controls.Add(Inf_panel);
             Controls.Add(get_inf_btn);
-            Controls.Add(get_inf_text);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
             Margin = new Padding(4);
+            MaximumSize = new Size(812, 740);
+            MinimumSize = new Size(812, 740);
             Name = "TCKForm";
             Text = "2";
             MouseDown += RegisterForm_MouseDown;
@@ -468,7 +435,6 @@
         private Panel panel1;
         private Label button_exit;
         private Label TCK_title;
-        private Label get_inf_text;
         private Button get_inf_btn;
         private Panel Inf_panel;
         private Label firstname_text;
@@ -477,7 +443,6 @@
         private Label city_text;
         private Label docid_text;
         private Button change_inf_btn;
-        private Label change_inf_text;
         private Panel Inf_panel_change;
         private TextBox city_textbox;
         private TextBox age_textbox;
