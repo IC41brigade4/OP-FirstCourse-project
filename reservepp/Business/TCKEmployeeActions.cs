@@ -18,27 +18,17 @@ namespace reservepp
 
         public string AgreeOffer(bool? isPermissionGranted)
         {
-            // Фільтруємо лише "Не переглянуто"
             var pendingOrders = _orderService.GetAllOrders()
                                              .Where(o => o.Status == "Не переглянуто")
                                              .ToList();
 
             if (pendingOrders.Count == 0)
-            {
                 return "Немає запитів зі статусом 'Не переглянуто'.";
-            }
 
-            if (_counter >= pendingOrders.Count)
-            {
-                return "Більше запитів для перегляду немає.";
-            }
-
-            var order = pendingOrders[_counter];
+            var order = pendingOrders.First(); // завжди беремо перший з черги
 
             if (isPermissionGranted == null)
-            {
                 return "Тобі потрібно обрати надавати дозвіл чи ні!";
-            }
 
             if (isPermissionGranted == true)
             {
@@ -51,7 +41,6 @@ namespace reservepp
                 {
                     order.Status = "Прийнято, але призовників немає.";
                     _orderService.UpdateOrder(order);
-                    _counter++;
                     return $"⚠️ OrderID {order.OrderID} → Прийнято, але призовників немає.";
                 }
 
@@ -71,23 +60,13 @@ namespace reservepp
             }
 
             _orderService.UpdateOrder(order);
-            _counter++;
-
             return $"OrderID {order.OrderID} — Officer {order.DocID} → {order.Status}";
         }
 
         public Order? GetCurrentOrder()
         {
-            var pendingOrders = _orderService.GetAllOrders()
-                                             .Where(o => o.Status == "Не переглянуто")
-                                             .ToList();
-
-            if (_counter < pendingOrders.Count)
-            {
-                return pendingOrders[_counter];
-            }
-
-            return null;
+            return _orderService.GetAllOrders()
+                                .FirstOrDefault(o => o.Status == "Не переглянуто");
         }
 
         public void ResetCounter()
