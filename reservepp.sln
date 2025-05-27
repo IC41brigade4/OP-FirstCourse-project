@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "reservepp", "reservepp\reservepp.csproj", "{C40921F1-D981-47D2-B7AC-383E676E92C6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "reservepp", "reservepp\reservepp.csproj", "{C40921F1-D981-47D2-B7AC-383E676E92C6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "reservepp.Tests", "reservepp.Tests\reservepp.Tests.csproj", "{1D57D0FB-FA7A-4322-9ED4-EBEADC7D6E71}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{C40921F1-D981-47D2-B7AC-383E676E92C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C40921F1-D981-47D2-B7AC-383E676E92C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C40921F1-D981-47D2-B7AC-383E676E92C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D57D0FB-FA7A-4322-9ED4-EBEADC7D6E71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D57D0FB-FA7A-4322-9ED4-EBEADC7D6E71}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D57D0FB-FA7A-4322-9ED4-EBEADC7D6E71}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D57D0FB-FA7A-4322-9ED4-EBEADC7D6E71}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
