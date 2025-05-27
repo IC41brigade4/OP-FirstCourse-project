@@ -55,6 +55,7 @@
         }
 
 
+
         private void label2_MouseClick(object sender, MouseEventArgs e)
         {
             this.Close();
@@ -121,7 +122,6 @@
             Text_for_permision.AppendText($"Результат: {result}\r\n\r\n");
             LoadOrders(); // показати наступний офер
         }
-
 
         private void save_btn_Click(object sender, EventArgs e) { }
         private void change_inf_btn_Click(object sender, EventArgs e) { }

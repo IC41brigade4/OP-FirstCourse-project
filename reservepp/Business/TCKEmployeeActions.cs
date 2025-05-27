@@ -18,19 +18,22 @@ namespace reservepp
 
         public string AgreeOffer(bool? isPermissionGranted)
         {
-            var orders = _orderService.GetAllOrders().ToList();
+            // Фільтруємо лише "Не переглянуто"
+            var pendingOrders = _orderService.GetAllOrders()
+                                             .Where(o => o.Status == "Не переглянуто")
+                                             .ToList();
 
-            if (orders.Count == 0)
+            if (pendingOrders.Count == 0)
             {
-                return "Список запитів порожній.";
+                return "Немає запитів зі статусом 'Не переглянуто'.";
             }
 
-            if (_counter >= orders.Count)
+            if (_counter >= pendingOrders.Count)
             {
-                return "Більше запитів немає.";
+                return "Більше запитів для перегляду немає.";
             }
 
-            var order = orders[_counter];
+            var order = pendingOrders[_counter];
 
             if (isPermissionGranted == null)
             {
@@ -39,15 +42,9 @@ namespace reservepp
 
             if (isPermissionGranted == true)
             {
-                //var allConscripts = _userService.GetUsersByRole("Conscript").ToList();
-                //foreach (var u in allConscripts)
-                //{
-                //    MessageBox.Show($"User: {u.FirstName}, ArmyUnit: '{u.ArmyUnit}'");
-                //}
-
                 var conscripts = _userService.GetUsersByRole("Conscript")
                                              .Where(u => u.ArmyUnit == "None")
-                                             .Take(order.OrderNum) // тільки вказана кількість
+                                             .Take(order.OrderNum)
                                              .ToList();
 
                 if (conscripts.Count == 0)
@@ -61,7 +58,7 @@ namespace reservepp
                 var rnd = new Random();
                 foreach (var user in conscripts)
                 {
-                    string unit = rnd.Next(1, 4).ToString(); // "1", "2", "3"
+                    string unit = rnd.Next(1, 4).ToString();
                     user.ArmyUnit = unit;
                     _userService.UpdateUser(user);
                 }
@@ -78,16 +75,20 @@ namespace reservepp
 
             return $"OrderID {order.OrderID} — Officer {order.DocID} → {order.Status}";
         }
+
         public Order? GetCurrentOrder()
         {
-            var orders = _orderService.GetAllOrders().ToList();
-            if (_counter < orders.Count)
+            var pendingOrders = _orderService.GetAllOrders()
+                                             .Where(o => o.Status == "Не переглянуто")
+                                             .ToList();
+
+            if (_counter < pendingOrders.Count)
             {
-                return orders[_counter];
+                return pendingOrders[_counter];
             }
+
             return null;
         }
-
 
         public void ResetCounter()
         {
